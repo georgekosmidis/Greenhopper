@@ -4,6 +4,17 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/georgekosmidis/carbon-aware-azure-function</PackageProjectUrl>
+    <PackageIcon></PackageIcon>
+    <Company />
+    <Authors>$(Authors)</Authors>
+    <Copyright>George Kosmidis</Copyright>
+    <RepositoryUrl>https://github.com/georgekosmidis/carbon-aware-azure-function</RepositoryUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageTags>Azure Function, Carbon Aware, Green Software, Sustainable Software</PackageTags>
+    <Description>A service that adds carbon-aware capabilities to your Azure Function, using the carbon-aware SDK. 
+Visit https://github.com/georgekosmidis/carbon-aware-azure-function for more.</Description>
   </PropertyGroup>
 	
   <ItemGroup>
