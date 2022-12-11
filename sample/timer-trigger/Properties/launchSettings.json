@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "CarbonAware.AzureFunction": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7186",
+      "launchBrowser": false
+    }
+  }
+}

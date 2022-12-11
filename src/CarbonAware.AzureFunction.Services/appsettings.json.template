@@ -1,0 +1,11 @@
+﻿{
+  "carbonAwareVars:EmissionsDataSource": "WattTime",
+  "carbonAwareVars:proxy:useProxy": false,
+  "carbonAwareVars:proxy:url": "",
+  "carbonAwareVars:proxy:username": "",
+  "carbonAwareVars:proxy:password": "",
+  "wattTimeClient:username": "wattTimeClient-username",
+  "wattTimeClient:password": "wattTimeClient-password",
+  "carbonAwareFunctionVars:EmmissionsThreshold": 450,
+  "carbonAwareFunctionVars:OnNoEmissionsContinue": false
+}

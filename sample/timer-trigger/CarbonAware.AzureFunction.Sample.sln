@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.AzureFunction.Sample", "CarbonAware.AzureFunction.Sample.csproj", "{D4A50DDE-281E-4DEA-9DFC-3AA5237741E9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.AzureFunction.Services", "..\..\src\CarbonAware.AzureFunction.Services\CarbonAware.AzureFunction.Services.csproj", "{BFC9DC09-6A7D-413B-BC95-58A6CB99C40F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D4A50DDE-281E-4DEA-9DFC-3AA5237741E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4A50DDE-281E-4DEA-9DFC-3AA5237741E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4A50DDE-281E-4DEA-9DFC-3AA5237741E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4A50DDE-281E-4DEA-9DFC-3AA5237741E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFC9DC09-6A7D-413B-BC95-58A6CB99C40F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFC9DC09-6A7D-413B-BC95-58A6CB99C40F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFC9DC09-6A7D-413B-BC95-58A6CB99C40F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFC9DC09-6A7D-413B-BC95-58A6CB99C40F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CB01275C-9766-4FD7-8641-6BBC17CF5942}
+	EndGlobalSection
+EndGlobal

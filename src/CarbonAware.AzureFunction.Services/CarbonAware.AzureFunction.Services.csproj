@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+	
+  <ItemGroup>
+    <ProjectReference Include="..\..\carbon-aware-sdk\src\CarbonAware.Aggregators\src\CarbonAware.Aggregators.csproj" />
+    <ProjectReference Include="..\..\carbon-aware-sdk\src\CarbonAware\src\CarbonAware.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json.template">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
+

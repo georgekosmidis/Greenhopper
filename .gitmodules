@@ -1,0 +1,3 @@
+[submodule "carbon-aware-sdk"]
+	path = carbon-aware-sdk
+	url = https://github.com/Green-Software-Foundation/carbon-aware-sdk
