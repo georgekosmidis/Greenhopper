@@ -1,4 +1,4 @@
-name: Prepare Static App
+name: Release New Nuget
 
 on:
   push:
