@@ -13,6 +13,8 @@ jobs:
       
     - name: checkout-code
       uses: actions/checkout@v3.0.0
+      with: 
+        submodules: true
       
     - name: pull-carbon-aware-sdk
       id: pull-carbon-aware-sdk
