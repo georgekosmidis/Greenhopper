@@ -32,7 +32,7 @@ jobs:
       run: dotnet build ./sample/timer-trigger/CarbonAware.AzureFunction.Sample.sln
       
   pack-service:
-    needs: [test-service]
+    # needs: [test-service]
     runs-on: ubuntu-latest
     steps:
     
