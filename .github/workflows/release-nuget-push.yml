@@ -1,0 +1,56 @@
+name: Prepare Static App
+
+on:
+  push:
+    branches: [ release/* ]
+    paths: src/**
+  workflow_dispatch:
+  
+jobs:
+  test-service:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: checkout
+      uses: actions/checkout@v3
+      with: 
+        submodules: true
+      
+    - name: build-service
+      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
+      run: dotnet build ./src/CarbonAware.AzureFunction.Services.sln
+      
+      # todo: run tests
+      
+    - name: build-sample
+      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
+      run: dotnet build ./sample/timer-trigger/CarbonAware.AzureFunction.Sample.sln
+      
+  pack-service:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: checkout
+      uses: actions/checkout@v3
+      with: 
+        submodules: true
+        
+    - name: pack
+      id: infrastate
+      run: |    
+        pushd ./src/CarbonAware.AzureFunction.Services/
+        dotnet pack CarbonAware.AzureFunction.Services.csproj-o ./ -c Release /p:Version=1.2.3
+        popd
+        
+    - name: upload-artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        path: ./src/CarbonAware.AzureFunction.Services/*.nupkg
+        
+  push-nuget:      
+      runs-on: ubuntu-latest
+      steps:
+      
+      - name: download-artifact
+        uses: actions/download-artifact@v3
+
