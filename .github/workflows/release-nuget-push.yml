@@ -1,4 +1,4 @@
-name: Release New Nuget
+name: Release new Version
 
 on:
   push:
@@ -41,7 +41,7 @@ jobs:
         
     - name: pack
       run: |    
-        version=$(echo ${GITHUB_REF#refs/heads/}
+        version=$(echo ${GITHUB_REF#refs/heads/})
         packid="${{ env.PROJECT_NAME }}.${version}.nupkg"
         echo $packid
         pushd ./src/${{ env.PROJECT_NAME }}/
