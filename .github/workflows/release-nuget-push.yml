@@ -27,7 +27,7 @@ jobs:
       
     - name: build-sample
       if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
-      run: dotnet build ./sample/timer-trigger/${{ env.PROJECT_NAME }}.sln
+      run: dotnet build ./sample/timer-trigger/CarbonAware.AzureFunction.Sample.sln
       
   pack-service:
     needs: [test-service]
