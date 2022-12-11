@@ -1,4 +1,4 @@
-name: Pull carbon-aware-sdk
+name: Update carbon-aware SDK
 
 on:
   schedule:
@@ -6,32 +6,40 @@ on:
   workflow_dispatch:
   
 jobs:
-  build-static-app:
+  update-carbon-aware-sdk:
     runs-on: ubuntu-latest
 
     steps:
       
     - name: checkout-code
       uses: actions/checkout@v3.0.0
+      with: 
+        submodules: true
       
     - name: pull-carbon-aware-sdk
+      id: pull-carbon-aware-sdk
       run: |
         pushd ./carbon-aware-sdk/
         status=$(git pull)
         popd
         if status='Already up to date.'; then
+          echo "continue=0" >> $GITHUB_OUTPUT
           exit 0
         fi
+        echo "continue=1" >> $GITHUB_OUTPUT
         
     - name: build-service
+      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
       run: dotnet build ./src/CarbonAware.AzureFunction.Services.sln
 
-# todo: run tests
+      # todo: run tests
 
     - name: build-sample
+      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
       run: dotnet build ./sample/timer-trigger/CarbonAware.AzureFunction.Sample.sln
     
     - name: create-new-branch-with-changes
+      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
       id: push_output
       run: |
            branchbasename=carbon-aware-sdk-$(date +"%Y.%m.%d-%H.%M.%S")-${{ github.run_number }}
@@ -48,6 +56,7 @@ jobs:
            echo "::set-output name=branchname::${branchname}"
 
     - name: pull-request
+      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
       uses: actions/github-script@v6
       with:
         script: |
