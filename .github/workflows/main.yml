@@ -27,10 +27,10 @@ jobs:
         echo "{continue}={1}" >> $GITHUB_OUTPUT
         
     - name: build-service
-      if: steps.pull-carbon-aware-sdk.continue == 1
+      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
       run: dotnet build ./src/CarbonAware.AzureFunction.Services.sln
 
-# todo: run tests
+      # todo: run tests
 
     - name: build-sample
       if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
@@ -54,7 +54,7 @@ jobs:
            echo "::set-output name=branchname::${branchname}"
 
     - name: pull-request
-      if: steps.pull-carbon-aware-sdk.continue == 1
+      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
       uses: actions/github-script@v6
       with:
         script: |
