@@ -27,6 +27,7 @@ jobs:
       run: dotnet build ./sample/timer-trigger/CarbonAware.AzureFunction.Sample.sln
       
   pack-service:
+    needs: [test-service]
     runs-on: ubuntu-latest
     steps:
     
@@ -48,6 +49,7 @@ jobs:
         path: ./src/CarbonAware.AzureFunction.Services/*.nupkg
         
   push-nuget:      
+      needs: [pack-service]
       runs-on: ubuntu-latest
       steps:
       
