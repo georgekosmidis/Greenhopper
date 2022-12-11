@@ -5,7 +5,10 @@ on:
     branches: [ release/* ]
     paths: src/**
   workflow_dispatch:
-  
+
+env:
+    PROJECT_NAME: CarbonAware.AzureFunction.Services
+
 jobs:
   test-service:
     runs-on: ubuntu-latest
@@ -18,13 +21,13 @@ jobs:
         
     - name: build-service
       if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
-      run: dotnet build ./src/CarbonAware.AzureFunction.Services.sln
+      run: dotnet build ./src/${{ env.PROJECT_NAME }}.sln
       
       # todo: run tests
       
     - name: build-sample
       if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
-      run: dotnet build ./sample/timer-trigger/CarbonAware.AzureFunction.Sample.sln
+      run: dotnet build ./sample/timer-trigger/${{ env.PROJECT_NAME }}.sln
       
   pack-service:
     needs: [test-service]
@@ -38,15 +41,18 @@ jobs:
         
     - name: pack
       run: |    
-        pushd ./src/CarbonAware.AzureFunction.Services/
+        version=$(echo ${GITHUB_REF#refs/heads/}
+        packid="${{ env.PROJECT_NAME }}.${version}.nupkg"
+        echo $packid
+        pushd ./src/${{ env.PROJECT_NAME }}/
         dotnet build -c Release
-        dotnet pack -c Release -p:PackageVersion=0.0.1
+        dotnet pack -c Release -p:PackageID=packid
         popd
         
     - name: upload-artifacts
       uses: actions/upload-artifact@v3
       with:
-        path: ./src/CarbonAware.AzureFunction.Services/*.nupkg
+        path: ./src/${{ env.PROJECT_NAME }}/*.nupkg
         
   push-nuget:      
       needs: [pack-service]
