@@ -50,7 +50,7 @@ jobs:
       id: infrastate
       run: |    
         pushd ./src/CarbonAware.AzureFunction.Services/
-        dotnet pack CarbonAware.AzureFunction.Services.csproj -o ./ -c Release /p:Version=1.2.3
+        dotnet pack /p:Version=1.2.3
         popd
         
     - name: upload-artifacts
