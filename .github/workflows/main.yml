@@ -21,7 +21,7 @@ jobs:
         status=$(git pull)
         popd
         if status='Already up to date.'; then
-          echo "::set-output name=continue::0"
+          echo "::set-output name=continue::1"
           exit 0
         fi
         echo "::set-output name=continue::1"
