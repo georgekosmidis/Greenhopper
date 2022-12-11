@@ -21,10 +21,10 @@ jobs:
         status=$(git pull)
         popd
         if status='Already up to date.'; then
-          echo "::set-output name=continue::1"
+          echo "{continue}={1}" >> $GITHUB_OUTPUT
           exit 0
         fi
-        echo "::set-output name=continue::1"
+        echo "{continue}={1}" >> $GITHUB_OUTPUT
         
     - name: build-service
       if: steps.pull-carbon-aware-sdk.continue == 1
@@ -33,11 +33,11 @@ jobs:
 # todo: run tests
 
     - name: build-sample
-      if: steps.pull-carbon-aware-sdk.continue == 1
+      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
       run: dotnet build ./sample/timer-trigger/CarbonAware.AzureFunction.Sample.sln
     
     - name: create-new-branch-with-changes
-      if: steps.pull-carbon-aware-sdk.continue == 1
+      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
       id: push_output
       run: |
            branchbasename=carbon-aware-sdk-$(date +"%Y.%m.%d-%H.%M.%S")-${{ github.run_number }}
