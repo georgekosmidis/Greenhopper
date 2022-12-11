@@ -18,9 +18,10 @@ jobs:
       run: |
         pushd ./carbon-aware-sdk/
         status=$(git pull)
+        git pull
         popd
         if status='Already up to date.'; then
-          exit 0
+          exit 1
         fi
         
     - name: build-service
