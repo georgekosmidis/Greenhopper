@@ -38,7 +38,7 @@ public static class HostingHostBuilderExtensions
                     _logger?.LogError(errorMessage);
                 }
 
-                sc.AddSingleton<IRegionEmissionsService, RegionEmissionsService>();
+                sc.AddSingleton<IExecutionWindowCalculator, ExecutionWindowCalculator>();
             });
     }
 }

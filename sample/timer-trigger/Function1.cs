@@ -11,9 +11,9 @@ namespace CarbonAware.AzureFunction
 
         private static readonly ActivitySource Activity = new ActivitySource(nameof(Function1));
 
-        private readonly IRegionEmissionsService _locationEmissions;
+        private readonly IExecutionWindowCalculator _locationEmissions;
 
-        public Function1(ILoggerFactory loggerFactory, IRegionEmissionsService locationEmissions)
+        public Function1(ILoggerFactory loggerFactory, IExecutionWindowCalculator locationEmissions)
         {
             _logger = loggerFactory.CreateLogger<Function1>();
             _locationEmissions = locationEmissions;
@@ -24,7 +24,7 @@ namespace CarbonAware.AzureFunction
         {
             using (var activity = Activity.StartActivity())
             {
-                if (!await _locationEmissions.ContinueExecutionAsync())
+                if (!await _locationEmissions.IsNowOptimal())
                 {
                     _logger.LogWarning("No execution for now!");
                     return;
