@@ -22,6 +22,7 @@ jobs:
         pushd ./carbon-aware-sdk/
         git config pull.rebase false
         status=$(git pull)
+        echo $status
         popd
         if status='Already up to date.'; then
           echo "continue=0" >> $GITHUB_OUTPUT
