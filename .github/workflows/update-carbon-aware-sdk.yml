@@ -20,6 +20,7 @@ jobs:
       id: pull-carbon-aware-sdk
       run: |
         pushd ./carbon-aware-sdk/
+        git config pull.rebase false
         status=$(git pull)
         popd
         if status='Already up to date.'; then
