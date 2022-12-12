@@ -87,11 +87,3 @@ jobs:
             labels: ['${{ github.event_name }}', 'automated-pr']
           });
           
-          if( '${{ github.event_name }}'  == 'schedule' ) {
-             github.rest.pulls.merge({
-               owner,
-               repo,
-               pull_number: pr.data.number,
-             });
-          }
-
