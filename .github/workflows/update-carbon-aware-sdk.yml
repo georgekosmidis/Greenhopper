@@ -19,13 +19,9 @@ jobs:
     - name: pull-carbon-aware-sdk
       id: pull-carbon-aware-sdk
       run: |
-        git pull
-        pushd ./carbon-aware-sdk/
-        git config pull.rebase false
-        status=$(git pull)
+        status=$(git submodule update --remote)
         echo $status
-        popd
-        if status='Already up to date.'; then
+        if ${status##*( )}=''; then
           echo "continue=0" >> $GITHUB_OUTPUT
           exit 0
         fi
