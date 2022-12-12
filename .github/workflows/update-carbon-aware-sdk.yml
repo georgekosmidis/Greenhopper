@@ -19,6 +19,7 @@ jobs:
     - name: pull-carbon-aware-sdk
       id: pull-carbon-aware-sdk
       run: |
+        git pull
         pushd ./carbon-aware-sdk/
         git config pull.rebase false
         status=$(git pull)
