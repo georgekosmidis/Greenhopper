@@ -43,7 +43,7 @@ jobs:
     - name: upload-artifacts
       uses: actions/upload-artifact@v3
       with:
-        path: ./src/CarbonAware.AzureFunction.Services/*.nupkg
+        path: ./**/*.nupkg
         
   push-nuget:      
       needs: [pack-service]
