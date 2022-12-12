@@ -21,8 +21,7 @@ jobs:
       run: |
         status=$(git submodule update --remote)
         echo "Status returned by submodule: ${status}"
-        if ( $status == '' ) 
-        then
+        if [ "$status" == "" ]; then
           echo "No carbon-aware SDK updates detected; Skipping run..."
           echo "continue=0" >> $GITHUB_OUTPUT
           exit 1
