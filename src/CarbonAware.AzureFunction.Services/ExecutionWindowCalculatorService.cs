@@ -10,23 +10,23 @@ using System.Text.Json;
 namespace CarbonAware.AzureFunction.Services;
 
 /// <summary>
-/// Service that tracks emissions for the current Azure Function Region 
+/// Service that finds the optimal window of execution
 /// </summary>
-public class ExecutionWindowCalculator : IExecutionWindowCalculator
+public class ExecutionWindowCalculatorService : IExecutionWindowCalculatorService
 {
-    private readonly ILogger<ExecutionWindowCalculator> _logger;
+    private readonly ILogger<ExecutionWindowCalculatorService> _logger;
 
     private readonly IForecastAggregator _forecastAggregator;
 
-    private static readonly ActivitySource Activity = new(nameof(ExecutionWindowCalculator));
+    private static readonly ActivitySource Activity = new(nameof(ExecutionWindowCalculatorService));
 
     private readonly CarbonAwareAzureFunctionConfiguration _configVars;
 
-    public ExecutionWindowCalculator(ILoggerFactory loggerFactory,
+    public ExecutionWindowCalculatorService(ILoggerFactory loggerFactory,
         IForecastAggregator forecastAggregator,
         IConfiguration configuration)
     {
-        _logger = loggerFactory.CreateLogger<ExecutionWindowCalculator>();
+        _logger = loggerFactory.CreateLogger<ExecutionWindowCalculatorService>();
         _forecastAggregator = forecastAggregator ?? throw new ArgumentNullException(nameof(forecastAggregator));
         _configVars = configuration
                     .GetSection(CarbonAwareAzureFunctionConfiguration.Key)
@@ -40,11 +40,10 @@ public class ExecutionWindowCalculator : IExecutionWindowCalculator
     /// between now and (now+hours) defined in <see cref="CarbonAwareAzureFunctionConfiguration.NextXHoursForAnExecutionWindow"/>.
     /// The values are available as config values in appsettings or in Azure Function Configuration.
     /// </summary>
-    /// <returns>True if the optimal window is now, false for every other reason.</returns>
+    /// <returns><code>true</code> if the optimal window is now, <code>false</code> for every other reason.</returns>
     public async Task<bool> IsNowOptimal()
     {
-
-        return await IsNowOptimalAsync(_configVars.EstimatedExecutionDuration, _configVars.NextXHoursForAnExecutionWindow);
+        return await IsOptimalAsync(_configVars.EstimatedExecutionDuration, _configVars.NextXHoursForAnExecutionWindow);
     }
 
     /// <summary>
@@ -59,15 +58,13 @@ public class ExecutionWindowCalculator : IExecutionWindowCalculator
     /// <returns></returns>
     /// <exception cref="NullReferenceException">Xhen <see cref="CarbonAwareAzureFunctionConfiguration.REGION_NAME"/> is not defined.</exception>
     /// <exception cref="CarbonAwareException">When no forecast data are returned and <see cref="CarbonAwareAzureFunctionConfiguration.OnNoForecastExecute"/> is set to false.</exception>
-    public async Task<bool> IsNowOptimalAsync(int estimatedExecutionDuration, int nextXHoursForAnExecutionWindow)
+    public async Task<bool> IsOptimalAsync(int estimatedExecutionDuration, int nextXHoursForAnExecutionWindow)
     {
         using var activity = Activity.StartActivity();
 
         var region = Environment.GetEnvironmentVariable(CarbonAwareAzureFunctionConfiguration.REGION_NAME)?.Replace(" ", string.Empty).ToLower()
             ?? throw new NullReferenceException(nameof(CarbonAwareAzureFunctionConfiguration.REGION_NAME));
-
         var datetimeNow = RoundUp(DateTimeOffset.Now, TimeSpan.FromMinutes(5));
-
         _logger.LogInformation("Requesting forecast for region '{region}' and datetime '{datetimeNow}'", region, datetimeNow);
 
         var foreCastData = await _forecastAggregator.GetCurrentForecastDataAsync(new EmissionsForecastCurrentDTO
@@ -110,7 +107,7 @@ public class ExecutionWindowCalculator : IExecutionWindowCalculator
         if (foreCastData.First().OptimalDataPoints.Any(x => x.Time == datetimeNow))
         {
             //execute
-            _logger.LogInformation("In optimal window, starting execution!");
+            _logger.LogInformation("Currently in optimal window; starting execution!");
             return true;
         }
 

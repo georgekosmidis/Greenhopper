@@ -1,6 +1,6 @@
 ﻿namespace CarbonAware.AzureFunction.Services;
 
-public interface IExecutionWindowCalculator
+public interface IExecutionWindowCalculatorService
 {
     Task<bool> IsNowOptimal();
 }

@@ -11,9 +11,9 @@ namespace CarbonAware.AzureFunction
 
         private static readonly ActivitySource Activity = new ActivitySource(nameof(Function1));
 
-        private readonly IExecutionWindowCalculator _locationEmissions;
+        private readonly IExecutionWindowCalculatorService _locationEmissions;
 
-        public Function1(ILoggerFactory loggerFactory, IExecutionWindowCalculator locationEmissions)
+        public Function1(ILoggerFactory loggerFactory, IExecutionWindowCalculatorService locationEmissions)
         {
             _logger = loggerFactory.CreateLogger<Function1>();
             _locationEmissions = locationEmissions;
