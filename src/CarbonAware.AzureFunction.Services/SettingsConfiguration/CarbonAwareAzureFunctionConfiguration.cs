@@ -13,7 +13,7 @@ public class CarbonAwareAzureFunctionConfiguration
     /// <summary>
     /// Searches the optimal time to run the Azure Function in the next X hours
     /// </summary>
-    public int HoursForExecutionWindowSearch { get; set; }
+    public int NextXHoursForAnExecutionWindow { get; set; }
 
     /// <summary>
     /// Gets or sets a flag signaling the function to run when no emissions returned.

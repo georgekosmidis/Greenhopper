@@ -15,9 +15,9 @@
     <PackageTags>Azure Function, Carbon Aware, Green Software, Sustainable Software</PackageTags>
     <Description>A service that adds carbon-aware capabilities to your Azure Function, using the carbon-aware SDK. 
 Visit https://github.com/georgekosmidis/carbon-aware-azure-function for more.</Description>
-    <AssemblyVersion>0.0.2</AssemblyVersion>
-    <FileVersion>0.0.2</FileVersion>
-    <Version>0.0.2</Version>
+    <AssemblyVersion>0.0.3</AssemblyVersion>
+    <FileVersion>0.0.3</FileVersion>
+    <Version>0.0.3</Version>
   </PropertyGroup>
 	
   <ItemGroup>

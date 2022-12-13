@@ -20,7 +20,7 @@ public class ExecutionWindowCalculator : IExecutionWindowCalculator
 
     private static readonly ActivitySource Activity = new(nameof(ExecutionWindowCalculator));
 
-    private readonly IConfiguration _configuration;
+    private readonly CarbonAwareAzureFunctionConfiguration _configVars;
 
     public ExecutionWindowCalculator(ILoggerFactory loggerFactory,
         IForecastAggregator forecastAggregator,
@@ -28,19 +28,40 @@ public class ExecutionWindowCalculator : IExecutionWindowCalculator
     {
         _logger = loggerFactory.CreateLogger<ExecutionWindowCalculator>();
         _forecastAggregator = forecastAggregator ?? throw new ArgumentNullException(nameof(forecastAggregator));
-        _configuration = configuration;
+        _configVars = configuration
+                    .GetSection(CarbonAwareAzureFunctionConfiguration.Key)
+                    .Get<CarbonAwareAzureFunctionConfiguration>();
     }
 
     /// <summary>
-    /// Calculates if the current time is optimal for executing your Azure Function Payload
+    /// Calculates if the current time is optimal for executing your Azure Function workload.
+    /// The engine searches for the optimal window of executing 
+    /// a <see cref="CarbonAwareAzureFunctionConfiguration.EstimatedExecutionDuration"/> minutes workload
+    /// between now and (now+hours) defined in <see cref="CarbonAwareAzureFunctionConfiguration.NextXHoursForAnExecutionWindow"/>.
+    /// The values are available as config values in appsettings or in Azure Function Configuration.
     /// </summary>
-    /// <returns></returns>
-    /// <exception cref="NullReferenceException"></exception>
-    /// <exception cref="CarbonAwareException"></exception>
+    /// <returns>True if the optimal window is now, false for every other reason.</returns>
     public async Task<bool> IsNowOptimal()
     {
+
+        return await IsNowOptimalAsync(_configVars.EstimatedExecutionDuration, _configVars.NextXHoursForAnExecutionWindow);
+    }
+
+    /// <summary>
+    /// Calculates if the current time is optimal for executing your Azure Function workload.
+    /// The engine searches for the optimal window of executing 
+    /// a <paramref name="estimatedExecutionDuration"/> minutes workload
+    /// between now and (now+hours) defined in <paramref name="nextXHoursForAnExecutionWindow"/>.
+    /// The values are available as config values in appsettings or in Azure Function Configuration.
+    /// </summary>
+    /// <param name="estimatedExecutionDuration">A parameter indicating the estimated minutes of execution of the Azure Function.</param>
+    /// <param name="nextXHoursForAnExecutionWindow">A parameter indicating the timespan within the execution window should be searched.</param>
+    /// <returns></returns>
+    /// <exception cref="NullReferenceException">Xhen <see cref="CarbonAwareAzureFunctionConfiguration.REGION_NAME"/> is not defined.</exception>
+    /// <exception cref="CarbonAwareException">When no forecast data are returned and <see cref="CarbonAwareAzureFunctionConfiguration.OnNoForecastExecute"/> is set to false.</exception>
+    public async Task<bool> IsNowOptimalAsync(int estimatedExecutionDuration, int nextXHoursForAnExecutionWindow)
+    {
         using var activity = Activity.StartActivity();
-        var configVars = _configuration.GetSection(CarbonAwareAzureFunctionConfiguration.Key).Get<CarbonAwareAzureFunctionConfiguration>();
 
         var region = Environment.GetEnvironmentVariable(CarbonAwareAzureFunctionConfiguration.REGION_NAME)?.Replace(" ", string.Empty).ToLower()
             ?? throw new NullReferenceException(nameof(CarbonAwareAzureFunctionConfiguration.REGION_NAME));
@@ -53,8 +74,8 @@ public class ExecutionWindowCalculator : IExecutionWindowCalculator
         {
             MultipleLocations = new string[] { region },
             Start = datetimeNow,
-            End = datetimeNow.AddHours(configVars.HoursForExecutionWindowSearch),
-            Duration = configVars.EstimatedExecutionDuration
+            End = datetimeNow.AddHours(nextXHoursForAnExecutionWindow),
+            Duration = estimatedExecutionDuration
         });
 
         //log if debug is requested
@@ -73,8 +94,8 @@ public class ExecutionWindowCalculator : IExecutionWindowCalculator
         if (!foreCastData.Any())
         {
             _logger.LogError("No forecast data returned for region '{region}' and datetime '{datetimeNow}'.", region, datetimeNow);
-            return !configVars.OnNoForecastExecute
-                ? throw new CarbonAwareException($"No forecast returned for region '{region}' and datetime '{datetimeNow}' and '{nameof(configVars.OnNoForecastExecute)}' is false.")
+            return !_configVars.OnNoForecastExecute
+                ? throw new CarbonAwareException($"No forecast returned for region '{region}' and datetime '{datetimeNow}' and '{nameof(CarbonAwareAzureFunctionConfiguration.OnNoForecastExecute)}' is false.")
                 : false;
         }
 
@@ -97,7 +118,7 @@ public class ExecutionWindowCalculator : IExecutionWindowCalculator
         return false;
     }
 
-    private DateTimeOffset RoundUp(DateTimeOffset dt, TimeSpan d)
+    private static DateTimeOffset RoundUp(DateTimeOffset dt, TimeSpan d)
     {
         return new DateTimeOffset((dt.Ticks + d.Ticks - 1) / d.Ticks * d.Ticks, dt.Offset);
     }
