@@ -6,6 +6,13 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<UserSecretsId>9566764e-4221-4f24-b0be-f6bd89b3c3d7</UserSecretsId>
+		<GenerateDocumentationFile>False</GenerateDocumentationFile>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <Optimize>False</Optimize>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <Optimize>True</Optimize>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.10.0" />
@@ -15,7 +22,7 @@
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\src\CarbonAware.AzureFunction.Services\CarbonAware.AzureFunction.Services.csproj" />
+		<ProjectReference Include="..\..\src\Grasshopper\Grasshopper.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="appsettings.json">

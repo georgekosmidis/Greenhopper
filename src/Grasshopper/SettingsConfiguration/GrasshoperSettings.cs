@@ -1,8 +1,18 @@
-﻿namespace CarbonAware.AzureFunction.Services.SettingsConfiguration;
-public class CarbonAwareAzureFunctionConfiguration
+﻿namespace Grasshopper.SettingsConfiguration;
+
+/// <summary>
+/// The settings required by Grasshopper to run.
+/// </summary>
+public class GrasshoperSettings
 {
+    /// <summary>
+    /// The environment variable name of the Azure Region.
+    /// </summary>
     public const string REGION_NAME = "REGION_NAME";
 
+    /// <summary>
+    /// The Settings key for the Carbon Aware SDK variables.
+    /// </summary>
     public const string Key = "carbonAwareFunctionVars";
 
     /// <summary>

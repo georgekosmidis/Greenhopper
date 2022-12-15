@@ -1,54 +1,51 @@
-using CarbonAware.AzureFunction.Services;
+using Grasshopper;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
-namespace CarbonAware.AzureFunction
+namespace CarbonAware.AzureFunction;
+
+public class Function1
 {
-    public class Function1
+    private readonly ILogger<Function1> _logger;
+
+    private static readonly ActivitySource Activity = new(nameof(Function1));
+
+    private readonly IOptimalWindowCalculatorService _locationEmissions;
+
+    public Function1(ILoggerFactory loggerFactory, IOptimalWindowCalculatorService locationEmissions)
     {
-        private readonly ILogger<Function1> _logger;
+        _logger = loggerFactory.CreateLogger<Function1>();
+        _locationEmissions = locationEmissions;
+    }
 
-        private static readonly ActivitySource Activity = new ActivitySource(nameof(Function1));
-
-        private readonly IExecutionWindowCalculatorService _locationEmissions;
-
-        public Function1(ILoggerFactory loggerFactory, IExecutionWindowCalculatorService locationEmissions)
+    [Function("CarbonAwareFunction")]
+    public async Task Run([TimerTrigger("0 */1 * * * *")] TimerInfo timerInfo)
+    {
+        using var activity = Activity.StartActivity();
+        if (!await _locationEmissions.IsOptimalWindowNowAsync())
         {
-            _logger = loggerFactory.CreateLogger<Function1>();
-            _locationEmissions = locationEmissions;
+            _logger.LogWarning("No execution for now!");
+            return;
         }
+        _logger.LogInformation("Executing!!!");
 
-        [Function("CarbonAwareFunction")]
-        public async Task Run([TimerTrigger("0 */1 * * * *")] TimerInfo timerInfo)
-        {
-            using (var activity = Activity.StartActivity())
-            {
-                if (!await _locationEmissions.IsNowOptimal())
-                {
-                    _logger.LogWarning("No execution for now!");
-                    return;
-                }
-                _logger.LogInformation("Executing!!!!!!!");
-
-                //Write your payload here
-            }
-        }
+        //Write your payload here
     }
+}
 
-    public class TimerInfo
-    {
-        public TimerScheduleStatus? ScheduleStatus { get; set; }
+public class TimerInfo
+{
+    public TimerScheduleStatus? ScheduleStatus { get; set; }
 
-        public bool IsPastDue { get; set; }
-    }
+    public bool IsPastDue { get; set; }
+}
 
-    public class TimerScheduleStatus
-    {
-        public DateTime Last { get; set; }
+public class TimerScheduleStatus
+{
+    public DateTime Last { get; set; }
 
-        public DateTime Next { get; set; }
+    public DateTime Next { get; set; }
 
-        public DateTime LastUpdated { get; set; }
-    }
+    public DateTime LastUpdated { get; set; }
 }

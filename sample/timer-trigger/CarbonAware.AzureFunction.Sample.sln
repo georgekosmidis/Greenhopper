@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.AzureFunction.Sample", "CarbonAware.AzureFunction.Sample.csproj", "{D4A50DDE-281E-4DEA-9DFC-3AA5237741E9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.AzureFunction.Services", "..\..\src\CarbonAware.AzureFunction.Services\CarbonAware.AzureFunction.Services.csproj", "{BFC9DC09-6A7D-413B-BC95-58A6CB99C40F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grasshopper", "..\..\src\Grasshopper\Grasshopper.csproj", "{4B7730B4-348C-4855-A6AF-6850BC5BCCF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{D4A50DDE-281E-4DEA-9DFC-3AA5237741E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4A50DDE-281E-4DEA-9DFC-3AA5237741E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4A50DDE-281E-4DEA-9DFC-3AA5237741E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BFC9DC09-6A7D-413B-BC95-58A6CB99C40F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BFC9DC09-6A7D-413B-BC95-58A6CB99C40F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BFC9DC09-6A7D-413B-BC95-58A6CB99C40F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BFC9DC09-6A7D-413B-BC95-58A6CB99C40F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B7730B4-348C-4855-A6AF-6850BC5BCCF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B7730B4-348C-4855-A6AF-6850BC5BCCF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B7730B4-348C-4855-A6AF-6850BC5BCCF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B7730B4-348C-4855-A6AF-6850BC5BCCF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

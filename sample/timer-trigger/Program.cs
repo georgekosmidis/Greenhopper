@@ -1,8 +1,8 @@
-using CarbonAware.AzureFunction.Services.HostingHostBuilderExtensions;
+using Grasshopper.HostingHostBuilderExtensions;
 using Microsoft.Extensions.Hosting;
 
 new HostBuilder()
     .ConfigureFunctionsWorkerDefaults()
-    .ConfigureCarbonAwareApp()
+    .ConfigureGrasshopper()
     .Build()
     .Run();

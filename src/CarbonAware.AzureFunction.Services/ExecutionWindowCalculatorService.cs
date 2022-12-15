@@ -1,13 +1,13 @@
 ﻿using CarbonAware.Aggregators.Forecast;
-using CarbonAware.AzureFunction.Services.Models;
-using CarbonAware.AzureFunction.Services.SettingsConfiguration;
+using Grasshopper.Models;
+using Grasshopper.SettingsConfiguration;
 using CarbonAware.Exceptions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Text.Json;
 
-namespace CarbonAware.AzureFunction.Services;
+namespace Grasshopper;
 
 /// <summary>
 /// Service that finds the optimal window of execution
@@ -41,7 +41,7 @@ public class ExecutionWindowCalculatorService : IExecutionWindowCalculatorServic
     /// The values are available as config values in appsettings or in Azure Function Configuration.
     /// </summary>
     /// <returns><code>true</code> if the optimal window is now, <code>false</code> for every other reason.</returns>
-    public async Task<bool> IsNowOptimal()
+    public async Task<bool> IsOptimalAsync()
     {
         return await IsOptimalAsync(_configVars.EstimatedExecutionDuration, _configVars.NextXHoursForAnExecutionWindow);
     }
