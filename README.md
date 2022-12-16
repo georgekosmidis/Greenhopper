@@ -97,7 +97,7 @@ For testing purposes, greenhooper uses watttime.org that gives you unlimited acc
 
 For testing, you can use the username/password provided, but for production you need to create your own account using the following `POST` request (there is no UI!):
 
-```json
+```
 POST /v2/register HTTP/1.1
 Host: api2.watttime.org
 Content-Type: application/json
