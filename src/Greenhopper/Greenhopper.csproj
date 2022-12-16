@@ -5,24 +5,25 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageProjectUrl>https://github.com/georgekosmidis/carbon-aware-azure-function</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/georgekosmidis/greenhopper</PackageProjectUrl>
     <PackageIcon></PackageIcon>
     <Company />
     <Authors>George Kosmidis</Authors>
     <Copyright>George Kosmidis</Copyright>
-    <RepositoryUrl>https://github.com/georgekosmidis/carbon-aware-azure-function</RepositoryUrl>
+    <RepositoryUrl>https://github.com/georgekosmidis/greenhopper</RepositoryUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageTags>Azure Function, Carbon Aware, Green Software, Sustainable Software</PackageTags>
-    <Description>A service that adds carbon-aware capabilities to your Azure Function, using the carbon-aware SDK. 
-Visit https://github.com/georgekosmidis/carbon-aware-azure-function for more.</Description>
-    <AssemblyVersion>0.0.4</AssemblyVersion>
-    <FileVersion>0.0.4</FileVersion>
-    <Version>0.0.4</Version>
+    <Description>
+		Greenhopper is a small library that adds carbon aware capabilities to your code, converting your workload to a sustainable one, and thus environmentally friendlier.
+		Visit https://github.com/georgekosmidis/greenhopper for more.</Description>
+    <AssemblyVersion>0.0.5</AssemblyVersion>
+    <FileVersion>0.0.5</FileVersion>
+    <Version>0.0.5</Version>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="GrasshopperConfiguration\HostingHostBuilderExtensions.cs~RF48a5c54.TMP" />
+    <None Remove="GreenhopperConfiguration\HostingHostBuilderExtensions.cs~RF48a5c54.TMP" />
   </ItemGroup>
 	
   <ItemGroup>

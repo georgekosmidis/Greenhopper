@@ -1,29 +1,29 @@
-using Grasshopper;
+using Greenhopper;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
 namespace CarbonAware.AzureFunction;
 
-public class Function1
+public class CarbonAwareFunction1
 {
-    private readonly ILogger<Function1> _logger;
+    private readonly ILogger<CarbonAwareFunction1> _logger;
 
-    private static readonly ActivitySource Activity = new(nameof(Function1));
+    private static readonly ActivitySource Activity = new(nameof(CarbonAwareFunction1));
 
-    private readonly IOptimalWindowCalculatorService _locationEmissions;
+    private readonly IGreenhopperService _greenhopper;
 
-    public Function1(ILoggerFactory loggerFactory, IOptimalWindowCalculatorService locationEmissions)
+    public CarbonAwareFunction1(ILoggerFactory loggerFactory, IGreenhopperService greenhopper)
     {
-        _logger = loggerFactory.CreateLogger<Function1>();
-        _locationEmissions = locationEmissions;
+        _logger = loggerFactory.CreateLogger<CarbonAwareFunction1>();
+        _greenhopper = greenhopper;
     }
 
-    [Function("CarbonAwareFunction")]
+    [Function("CarbonAwareFunction1")]
     public async Task Run([TimerTrigger("0 */1 * * * *")] TimerInfo timerInfo)
     {
         using var activity = Activity.StartActivity();
-        if (!await _locationEmissions.IsOptimalWindowNowAsync())
+        if (!await _greenhopper.IsOptimalWindowNowAsync())
         {
             _logger.LogWarning("No execution for now!");
             return;

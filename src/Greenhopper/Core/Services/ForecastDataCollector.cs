@@ -1,13 +1,13 @@
 ﻿using CarbonAware.Aggregators.Forecast;
 using CarbonAware.Model;
-using Grasshopper.Core.Cache;
-using Grasshopper.Core.Exceptions;
-using Grasshopper.Models;
+using Greenhopper.Core.Cache;
+using Greenhopper.Core.Exceptions;
+using Greenhopper.Models;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Text.Json;
 
-namespace Grasshopper.Core.Services;
+namespace Greenhopper.Core.Services;
 
 /// <summary>
 /// Service that retrieves emmissions forecasta data using the Carbon Aware SDK 

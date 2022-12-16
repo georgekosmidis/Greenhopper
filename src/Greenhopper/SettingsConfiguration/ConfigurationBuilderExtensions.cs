@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Reflection;
 
-namespace Grasshopper.SettingsConfiguration;
+namespace Greenhopper.SettingsConfiguration;
 
 /// <summary>
 /// Extensions for the <see cref="IConfigurationBuilder"/>.

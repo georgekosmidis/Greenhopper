@@ -1,7 +1,7 @@
 using CarbonAware.Aggregators.CarbonAware;
 using CarbonAware.Aggregators.Forecast;
 
-namespace Grasshopper.Models;
+namespace Greenhopper.Models;
 
 /// <summary>
 /// A Data Tranfer Object that holds the parameters  

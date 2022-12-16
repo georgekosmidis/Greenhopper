@@ -1,8 +1,8 @@
-﻿using Grasshopper.Core.Cache;
+﻿using Greenhopper.Core.Cache;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
-namespace Grasshopper.Core.Exceptions;
+namespace Greenhopper.Core.Exceptions;
 
 /// <summary>
 /// Helper methods that throw exception based on a specific failed check.
@@ -101,13 +101,13 @@ internal static class ExceptionExtensions
 
 
     /// <summary>
-    /// Throws an <seealso cref="GrasshopperException"/> when called.
+    /// Throws an <seealso cref="GreenhopperException"/> when called.
     /// </summary>
     /// <param name="message">The message for the exception.</param>
-    /// <exception cref="GrasshopperException">A generic exception for every <see cref="ExceptionExtensions"/> method.</exception>
+    /// <exception cref="GreenhopperException">A generic exception for every <see cref="ExceptionExtensions"/> method.</exception>
     [DoesNotReturn]
     private static void Throw(string? message)
     {
-        throw new GrasshopperException(message);
+        throw new GreenhopperException(message);
     }
 }

@@ -1,7 +1,7 @@
-﻿using Grasshopper.Core.Exceptions;
+﻿using Greenhopper.Core.Exceptions;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace Grasshopper.Core.Cache;
+namespace Greenhopper.Core.Cache;
 
 /// <summary>
 ///  Represents a local in-memory cache whose values are not serialized.

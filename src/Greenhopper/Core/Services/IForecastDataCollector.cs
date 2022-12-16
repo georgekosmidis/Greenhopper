@@ -1,6 +1,6 @@
 ﻿using CarbonAware.Model;
 
-namespace Grasshopper.Core.Services;
+namespace Greenhopper.Core.Services;
 
 /// <summary>
 /// An abstraction for an object that retrieves emissions forecast data.

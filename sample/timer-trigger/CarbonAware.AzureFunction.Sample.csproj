@@ -22,7 +22,7 @@
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\src\Grasshopper\Grasshopper.csproj" />
+		<ProjectReference Include="..\..\src\Greenhopper\Greenhopper.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="appsettings.json">

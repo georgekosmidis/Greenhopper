@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.AzureFunction.Sample", "CarbonAware.AzureFunction.Sample.csproj", "{D4A50DDE-281E-4DEA-9DFC-3AA5237741E9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grasshopper", "..\..\src\Grasshopper\Grasshopper.csproj", "{4B7730B4-348C-4855-A6AF-6850BC5BCCF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Greenhopper", "..\..\src\Greenhopper\Greenhopper.csproj", "{4B7730B4-348C-4855-A6AF-6850BC5BCCF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

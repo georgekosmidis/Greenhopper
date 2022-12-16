@@ -1,35 +1,35 @@
 ﻿using CarbonAware.Exceptions;
 using CarbonAware.Model;
-using Grasshopper.Core.Exceptions;
-using Grasshopper.Core.Services;
-using Grasshopper.Models;
-using Grasshopper.SettingsConfiguration;
+using Greenhopper.Core.Exceptions;
+using Greenhopper.Core.Services;
+using Greenhopper.Models;
+using Greenhopper.SettingsConfiguration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
-namespace Grasshopper;
+namespace Greenhopper;
 
 /// <summary>
 /// Service that finds the optimal window for the execution time suggested.
 /// </summary>
-public class OptimalWindowCalculatorService : IOptimalWindowCalculatorService
+public class GreenhopperService : IGreenhopperService
 {
-    private readonly ILogger<OptimalWindowCalculatorService> _logger;
+    private readonly ILogger<GreenhopperService> _logger;
 
     private readonly IForecastDataCollector _forecastDataCollector;
 
-    private static readonly ActivitySource Activity = new(nameof(OptimalWindowCalculatorService));
+    private static readonly ActivitySource Activity = new(nameof(GreenhopperService));
 
     private readonly GrasshoperSettings _settings;
 
     /// <summary>
-    /// Creates an instance of a <see cref="OptimalWindowCalculatorService"/>.
+    /// Creates an instance of a <see cref="GreenhopperService"/>.
     /// </summary>
     /// <param name="loggerFactory">An instance used to configure the logging system and create <see cref="ILogger"/> instances.</param>
     /// <param name="forecastDataCollector">An instance of the service that can retrieve forecast data from Carbon Aware SDK.</param>
     /// <param name="configuration">The key/value application configuration.</param>
-    public OptimalWindowCalculatorService(ILoggerFactory loggerFactory,
+    public GreenhopperService(ILoggerFactory loggerFactory,
         IForecastDataCollector forecastDataCollector,
         IConfiguration configuration)
     {
@@ -37,7 +37,7 @@ public class OptimalWindowCalculatorService : IOptimalWindowCalculatorService
         ExceptionExtensions.ThrowIfNull(forecastDataCollector);
         ExceptionExtensions.ThrowIfNull(configuration);
 
-        _logger = loggerFactory.CreateLogger<OptimalWindowCalculatorService>();
+        _logger = loggerFactory.CreateLogger<GreenhopperService>();
         _forecastDataCollector = forecastDataCollector;
         _settings = configuration
                     .GetSection(GrasshoperSettings.Key)
@@ -45,26 +45,26 @@ public class OptimalWindowCalculatorService : IOptimalWindowCalculatorService
     }
 
     /// <inheritdoc/>
-    public async Task<OptimalWindowResponse> GetForecastDataAsync(string region, DateTimeOffset datetime, int nextXHoursForAnExecutionWindow, int estimatedExecutionDuration)
+    public async Task<OptimalWindowResponse> GetForecastDataAsync(string region, DateTimeOffset datetime, int executionTimeFrameInHours, int estimatedExecutionDurationInMinutes)
     {
         using var activity = Activity.StartActivity();
 
         ExceptionExtensions.ThrowIfNullOrWhiteSpace(region);
-        ExceptionExtensions.ThrowIfOutsideBounds(nextXHoursForAnExecutionWindow, 1, int.MaxValue);
-        ExceptionExtensions.ThrowIfOutsideBounds(estimatedExecutionDuration, 1, nextXHoursForAnExecutionWindow * 60);
+        ExceptionExtensions.ThrowIfOutsideBounds(executionTimeFrameInHours, 1, int.MaxValue);
+        ExceptionExtensions.ThrowIfOutsideBounds(estimatedExecutionDurationInMinutes, 1, executionTimeFrameInHours * 60);
         ExceptionExtensions.ThrowIfOutsideBounds(datetime, DateTimeOffset.Now, DateTimeOffset.MaxValue);
 
         datetime = RoundUp(datetime, TimeSpan.FromMinutes(5));
 
         _logger.LogInformation("Requesting forecast for region '{region}' and datetime '{datetime}'", region, datetime);
-        var forecastData = await _forecastDataCollector.GetAsync(region, datetime, nextXHoursForAnExecutionWindow, estimatedExecutionDuration);
+        var forecastData = await _forecastDataCollector.GetAsync(region, datetime, executionTimeFrameInHours, estimatedExecutionDurationInMinutes);
 
         //no data
         if (forecastData == default)
         {
             _logger.LogError("No forecast data returned for region '{region}' and datetime '{datetimeNow}'.", region, datetime);
-            return !_settings.OnNoForecastExecute
-                ? throw new CarbonAwareException($"No forecast returned for region '{region}' and datetime '{datetime}' and '{nameof(GrasshoperSettings.OnNoForecastExecute)}' is false.")
+            return !_settings.OnNoForecastContinue
+                ? throw new CarbonAwareException($"No forecast returned for region '{region}' and datetime '{datetime}' and '{nameof(GrasshoperSettings.OnNoForecastContinue)}' is false.")
                 : new OptimalWindowResponse()
                 {
                     IsOptimalWindowNow = false,
@@ -111,36 +111,41 @@ public class OptimalWindowCalculatorService : IOptimalWindowCalculatorService
     {
         using var activity = Activity.StartActivity();
 
-        ExceptionExtensions.ThrowIfOutsideBounds(_settings.NextXHoursForAnExecutionWindow, 1, int.MaxValue);
-        ExceptionExtensions.ThrowIfOutsideBounds(_settings.EstimatedExecutionDuration, 1, _settings.NextXHoursForAnExecutionWindow * 60);
-
-        var region = Environment.GetEnvironmentVariable(GrasshoperSettings.REGION_NAME)?.Replace(" ", string.Empty).ToLower();
-        ExceptionExtensions.ThrowIfNullOrWhiteSpace(region);
-
-        var datetimeNow = RoundUp(DateTimeOffset.Now, TimeSpan.FromMinutes(5));
-
-        var result = await GetForecastDataAsync(region, datetimeNow, _settings.NextXHoursForAnExecutionWindow, _settings.EstimatedExecutionDuration);
-
-        return result.IsOptimalWindowNow;
+        return await IsOptimalWindowNowAsync(_settings.ExecutionTimeFrameInHours, _settings.EstimatedExecutionDurationInMinutes);
     }
 
     /// <inheritdoc/>
-    public async Task<bool> IsOptimalWindowNowAsync(int nextXHoursForAnExecutionWindow, int estimatedExecutionDuration)
+    public async Task<bool> IsOptimalWindowNowAsync(int executionTimeFrameInHours, int estimatedExecutionDurationInMinutes)
     {
         using var activity = Activity.StartActivity();
 
-        ExceptionExtensions.ThrowIfOutsideBounds(nextXHoursForAnExecutionWindow, 1, int.MaxValue);
-        ExceptionExtensions.ThrowIfOutsideBounds(estimatedExecutionDuration, 1, nextXHoursForAnExecutionWindow * 60);
+        ExceptionExtensions.ThrowIfOutsideBounds(executionTimeFrameInHours, 1, int.MaxValue);
+        ExceptionExtensions.ThrowIfOutsideBounds(estimatedExecutionDurationInMinutes, 1, executionTimeFrameInHours * 60);
 
         var region = Environment.GetEnvironmentVariable(GrasshoperSettings.REGION_NAME)?.Replace(" ", string.Empty).ToLower();
         ExceptionExtensions.ThrowIfNullOrWhiteSpace(region);
 
+        return await IsOptimalWindowNowAsync(region, executionTimeFrameInHours, estimatedExecutionDurationInMinutes);
+
+    }
+
+    /// <inheritdoc/>
+    public async Task<bool> IsOptimalWindowNowAsync(string region, int executionTimeFrameInHours, int estimatedExecutionDurationInMinutes)
+    {
+        using var activity = Activity.StartActivity();
+
+        ExceptionExtensions.ThrowIfNullOrWhiteSpace(region);
+        ExceptionExtensions.ThrowIfOutsideBounds(executionTimeFrameInHours, 1, int.MaxValue);
+        ExceptionExtensions.ThrowIfOutsideBounds(estimatedExecutionDurationInMinutes, 1, executionTimeFrameInHours * 60);
+
+        region = region.Replace(" ", string.Empty).ToLower();
+        ExceptionExtensions.ThrowIfNullOrWhiteSpace(region);
+
         var datetimeNow = RoundUp(DateTimeOffset.Now, TimeSpan.FromMinutes(5));
 
-        var result = await GetForecastDataAsync(region, datetimeNow, nextXHoursForAnExecutionWindow, estimatedExecutionDuration);
+        var result = await GetForecastDataAsync(region, datetimeNow, executionTimeFrameInHours, estimatedExecutionDurationInMinutes);
 
         return result.IsOptimalWindowNow;
-
     }
 
     private static DateTimeOffset RoundUp(DateTimeOffset dt, TimeSpan d)

@@ -1,6 +1,6 @@
 ﻿using CarbonAware.Model;
 
-namespace Grasshopper.Models;
+namespace Greenhopper.Models;
 
 /// <summary>
 /// A response object that contains the parsed result of 

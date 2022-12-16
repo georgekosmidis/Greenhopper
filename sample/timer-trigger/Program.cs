@@ -1,8 +1,8 @@
-using Grasshopper.HostingHostBuilderExtensions;
+using Greenhopper.HostingHostBuilderExtensions;
 using Microsoft.Extensions.Hosting;
 
 new HostBuilder()
     .ConfigureFunctionsWorkerDefaults()
-    .ConfigureGrasshopper()
+    .ConfigureGreenhopper()
     .Build()
     .Run();

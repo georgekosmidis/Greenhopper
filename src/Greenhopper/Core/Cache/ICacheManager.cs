@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Grasshopper.Core.Cache;
+namespace Greenhopper.Core.Cache;
 
 /// <summary>
 ///  An abstraction of the Cache Manager required.

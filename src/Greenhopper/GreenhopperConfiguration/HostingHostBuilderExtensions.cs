@@ -1,13 +1,13 @@
 ﻿using CarbonAware.Aggregators.Configuration;
-using Grasshopper.Core.Cache;
-using Grasshopper.Core.Services;
-using Grasshopper.SettingsConfiguration;
+using Greenhopper.Core.Cache;
+using Greenhopper.Core.Services;
+using Greenhopper.SettingsConfiguration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Grasshopper.HostingHostBuilderExtensions;
+namespace Greenhopper.HostingHostBuilderExtensions;
 
 /// <summary>
 /// Adds support for the carbon aware framework
@@ -15,11 +15,11 @@ namespace Grasshopper.HostingHostBuilderExtensions;
 public static class HostingHostBuilderExtensions
 {
     /// <summary>
-    /// Configures grasshopper
+    /// Configures Greenhopper
     /// </summary>
     /// <param name="hostBuilder">An instance of a <see cref="IHostBuilder"/>.</param>
     /// <returns> The same instance of the <see cref="IHostBuilder"/> for chaining.</returns>
-    public static IHostBuilder ConfigureGrasshopper(this IHostBuilder hostBuilder)
+    public static IHostBuilder ConfigureGreenhopper(this IHostBuilder hostBuilder)
     {
 
         return hostBuilder
@@ -42,7 +42,7 @@ public static class HostingHostBuilderExtensions
                 }
 
                 sc.AddLogging(builder => builder.AddDebug());
-                sc.AddSingleton<IOptimalWindowCalculatorService, OptimalWindowCalculatorService>();
+                sc.AddSingleton<IGreenhopperService, GreenhopperService>();
                 sc.AddMemoryCache();
                 sc.AddSingleton<ICacheManager, MemoryCacheManager>();
                 sc.AddSingleton<IForecastDataCollector, ForecastDataCollector>();

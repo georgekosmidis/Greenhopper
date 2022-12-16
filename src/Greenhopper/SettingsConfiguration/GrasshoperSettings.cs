@@ -1,7 +1,7 @@
-﻿namespace Grasshopper.SettingsConfiguration;
+﻿namespace Greenhopper.SettingsConfiguration;
 
 /// <summary>
-/// The settings required by Grasshopper to run.
+/// The settings required by Greenhopper to run.
 /// </summary>
 public class GrasshoperSettings
 {
@@ -13,20 +13,20 @@ public class GrasshoperSettings
     /// <summary>
     /// The Settings key for the Carbon Aware SDK variables.
     /// </summary>
-    public const string Key = "carbonAwareFunctionVars";
+    public const string Key = "greenhopper";
 
     /// <summary>
     /// Gets or sets the estimated execution duration of the Azure Function in minutes
     /// </summary>
-    public int EstimatedExecutionDuration { get; set; }
+    public int EstimatedExecutionDurationInMinutes { get; set; }
 
     /// <summary>
     /// Searches the optimal time to run the Azure Function in the next X hours
     /// </summary>
-    public int NextXHoursForAnExecutionWindow { get; set; }
+    public int ExecutionTimeFrameInHours { get; set; }
 
     /// <summary>
     /// Gets or sets a flag signaling the function to run when no emissions returned.
     /// </summary>
-    public bool OnNoForecastExecute { get; set; }
+    public bool OnNoForecastContinue { get; set; }
 }
