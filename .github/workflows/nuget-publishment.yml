@@ -1,4 +1,4 @@
-name: Publish New Version
+name: Nuget Publishment
 
 on:
   workflow_dispatch:
