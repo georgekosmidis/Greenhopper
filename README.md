@@ -1,4 +1,5 @@
 [![Update carbon-aware SDK](https://github.com/georgekosmidis/greenhopper/actions/workflows/update-carbon-aware-sdk.yml/badge.svg)](https://github.com/georgekosmidis/greenhopper/actions/workflows/update-carbon-aware-sdk.yml)
+
 [![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Greenhopper.svg?logo=nuget)](https://www.nuget.org/packages/Greenhopper) 
 
 # Greenhopper - Adds Carbon Aware Capabilities
