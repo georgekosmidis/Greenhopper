@@ -1,3 +1,5 @@
+[![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Greenhopper.svg?logo=nuget)](https://www.nuget.org/packages/Greenhopper) 
+
 # Greenhopper - Adds Carbon Aware Capabilities
 
 Greenhopper is a small library that adds carbon aware capabilities to your code, converting your workload to a sustainable one, and thus environmentally friendlier.
