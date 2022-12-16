@@ -1,1 +1,23 @@
+name: Build and Test
 
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  test-service:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: checkout
+      uses: actions/checkout@v3
+      with: 
+        submodules: true
+        
+    - name: build-service
+      run: dotnet build ./src/Greenhopper.sln
+      
+      # todo: run tests
+      
+    - name: build-sample
+      run: dotnet build ./sample/timer-trigger/CarbonAware.AzureFunction.Sample.sln
