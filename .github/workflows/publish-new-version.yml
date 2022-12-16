@@ -15,7 +15,7 @@ jobs:
         
     - name: build-service
       if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
-      run: dotnet build ./src/CarbonAware.AzureFunction.Services.sln
+      run: dotnet build ./src/Grasshopper.sln
       
       # todo: run tests
       
@@ -35,7 +35,7 @@ jobs:
         
     - name: pack
       run: |    
-        pushd ./src/CarbonAware.AzureFunction.Services/
+        pushd ./src/Grasshopper/
         dotnet build -c Release
         dotnet pack -c Release
         popd
