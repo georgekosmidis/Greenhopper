@@ -46,7 +46,7 @@ Install the [Greenhopper](https://www.nuget.org/packages/Greenhopper/) nuget pac
 }
 ```
 
-> For more configuration options, like using ElectricityMaps instead of WattTime or a test dataset, follow this: https://github.com/Green-Software-Foundation/carbon-aware-sdk/blob/dev/src/CarbonAware.WebApi/src/appsettings.Development.json.template
+> For more configuration options, like using [ElectricityMaps](https://www.electricitymaps.com/) instead of [WattTime](https://www.watttime.org/) or a test dataset, follow the Carbon Aware SDK appsettings template: https://github.com/Green-Software-Foundation/carbon-aware-sdk/blob/dev/src/CarbonAware.WebApi/src/appsettings.Development.json.template
 
 ### Configure Greenhopper in `Program.cs`
 
@@ -100,10 +100,10 @@ public class CarbonAwareFunction1
 ```
 
 ## Testing vs Production
-Carbon Aware SDK (and subsequently Greenhopper) is depended on 3rd party data providers such as WattTime or ElectricityMaps to get the emissions for a requested region. 
-For testing purposes, greenhooper uses watttime.org that gives you unlimited access to the Azure Region "West US" to try out the library and deploy your workloads.
+Carbon Aware SDK (and subsequently Greenhopper) is depended on 3rd party data providers such as [WattTime](https://www.watttime.org/) or [ElectricityMaps](https://www.electricitymaps.com/) to get the emissions for the region your Azure Function is deployed. 
+For testing and quick onboarding, Greenhopper uses [WattTime](https://www.watttime.org/) that gives you unlimited access to one Azure Region ("West US") to try out the library and deploy your workloads.
 
-For testing, you can use the username/password provided, but for production you need to create your own account using the following `POST` request (there is no UI!):
+The username/password included here is for testing only; for production you need to create your own account using the following `POST` request (there is no UI!):
 
 ```
 POST /v2/register HTTP/1.1
