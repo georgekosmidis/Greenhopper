@@ -7,7 +7,7 @@
 
 # Greenhopper - Decarbonize your Azure Functions!
 
-Greenhopper is a small library that adds carbon aware capabilities to your code, converting your workload to a sustainable one, and thus environmentally friendlier.
+Greenhopper is a small library that adds carbon aware capabilities to your code, converting your workload to a sustainable one, and thus more environmentally friendly.
 
 ## How it works
 
