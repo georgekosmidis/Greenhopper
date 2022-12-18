@@ -119,6 +119,8 @@ Content-Length: 143
 }
 ```
 
+> You can also import [this Postman Collection](https://raw.githubusercontent.com/georgekosmidis/Greenhopper/main/docs/WattTime%20Account.postman_collection.json).
+
 ##  References
 1. [Carbon Aware Azure Function Sample (Timer Trigger)](https://github.com/georgekosmidis/carbon-aware-azure-function/tree/main/sample/timer-trigger)
 2. [How to create an account in WattTime](https://www.watttime.org/api-documentation/#register-new-user)
