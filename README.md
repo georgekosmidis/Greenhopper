@@ -1,3 +1,5 @@
+![](docs/greenhopper.png)
+
 [![Build and Test](https://github.com/georgekosmidis/greenhopper/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/georgekosmidis/greenhopper/actions/workflows/build-and-test.yml) [![Update carbon-aware SDK](https://github.com/georgekosmidis/greenhopper/actions/workflows/update-carbon-aware-sdk.yml/badge.svg)](https://github.com/georgekosmidis/greenhopper/actions/workflows/update-carbon-aware-sdk.yml)
 
 [![Nuget Publishment](https://github.com/georgekosmidis/greenhopper/actions/workflows/nuget-publishment.yml/badge.svg)](https://github.com/georgekosmidis/greenhopper/actions/workflows/nuget-publishment.yml) [![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Greenhopper.svg?logo=nuget)](https://www.nuget.org/packages/Greenhopper) 
