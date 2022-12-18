@@ -100,10 +100,10 @@ public class CarbonAwareFunction1
 ```
 
 ## Testing vs Production
-Carbon Aware SDK (and subsequently Greenhopper) is depended on 3rd party data providers such as [WattTime](https://www.watttime.org/) or [ElectricityMaps](https://www.electricitymaps.com/) to get the emissions for the region your Azure Function is deployed. 
+[Carbon Aware SDK](https://github.com/Green-Software-Foundation/carbon-aware-sdk) (and subsequently Greenhopper) is depended on 3rd party data providers such as [WattTime](https://www.watttime.org/) or [ElectricityMaps](https://www.electricitymaps.com/) to get the emissions for the region your Azure Function is deployed. 
 For testing and quick onboarding, Greenhopper uses [WattTime](https://www.watttime.org/) that gives you unlimited access to one Azure Region ("West US") to try out the library and deploy your workloads.
 
-The username/password included here is for testing only; for production you need to create your own account using the following `POST` request (there is no UI!):
+> The username/password included here is for testing only; for production you need to create your own account using the following `POST` request (there is no UI!):
 
 ```
 POST /v2/register HTTP/1.1
@@ -124,3 +124,4 @@ Content-Length: 143
 ##  References
 1. [Carbon Aware Azure Function Sample (Timer Trigger)](https://github.com/georgekosmidis/carbon-aware-azure-function/tree/main/sample/timer-trigger)
 2. [How to create an account in WattTime](https://www.watttime.org/api-documentation/#register-new-user)
+3. [Carbon Aware SDK repo](https://github.com/Green-Software-Foundation/carbon-aware-sdk)
