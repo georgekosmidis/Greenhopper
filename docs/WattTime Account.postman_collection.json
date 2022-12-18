@@ -44,28 +44,7 @@
 						"v2",
 						"register"
 					],
-					"query": [
-						{
-							"key": "username",
-							"value": "pasokceucaunconcejelzje",
-							"disabled": true
-						},
-						{
-							"key": "password",
-							"value": "Ge0rge17$",
-							"disabled": true
-						},
-						{
-							"key": "email",
-							"value": "georgekosmidis@outlook.com",
-							"disabled": true
-						},
-						{
-							"key": "org",
-							"value": "AzDevCom",
-							"disabled": true
-						}
-					]
+					"query": []
 				}
 			},
 			"response": []
