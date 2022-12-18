@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "00a3f912-170a-4298-943d-8a77d38e57e3",
+		"name": "WattTime Account",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://api2.watttime.org/v2/register?username=george&password=Ge0rge17$&email=georgekosmidis@outlook.com&org=AzDevCom",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"greenhopper\",\r\n    \"password\": \"$gr33nh0pp3r\",\r\n    \"email\": \"email@example.com\",\r\n    \"org\": \"Greenhopper\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api2.watttime.org/v2/register",
+					"protocol": "https",
+					"host": [
+						"api2",
+						"watttime",
+						"org"
+					],
+					"path": [
+						"v2",
+						"register"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "pasokceucaunconcejelzje",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "Ge0rge17$",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "georgekosmidis@outlook.com",
+							"disabled": true
+						},
+						{
+							"key": "org",
+							"value": "AzDevCom",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
