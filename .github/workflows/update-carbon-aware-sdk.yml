@@ -31,7 +31,7 @@ jobs:
 
     - name: build-service
       if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
-      run: dotnet build ./src/Grasshopper.sln
+      run: dotnet build ./src/Greenhopper.sln
 
       # todo: run tests
 
