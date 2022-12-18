@@ -28,9 +28,9 @@ jobs:
         fi
         echo "continue=1" >> $GITHUB_OUTPUT
         echo "Changes to carbon-aware SDK detected; updating local branch..."
-        
+
     - name: build-service
-      if: steps.pull-carbon-aware-sdk.continue == 1
+      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
       run: dotnet build ./src/CarbonAware.AzureFunction.Services.sln
 
       # todo: run tests
