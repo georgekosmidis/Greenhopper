@@ -2,7 +2,7 @@
 
 [![Nuget Publishment](https://github.com/georgekosmidis/greenhopper/actions/workflows/nuget-publishment.yml/badge.svg)](https://github.com/georgekosmidis/greenhopper/actions/workflows/nuget-publishment.yml) [![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Greenhopper.svg?logo=nuget)](https://www.nuget.org/packages/Greenhopper) 
 
-![](docs/greenhopper_simple.png)
+![](https://raw.githubusercontent.com/georgekosmidis/Greenhopper/main/docs/greenhopper_simple.png)
 
 
 # Greenhopper - Decarbonize your Azure Functions!
