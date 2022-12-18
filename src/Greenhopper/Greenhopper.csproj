@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/georgekosmidis/greenhopper</PackageProjectUrl>
-    <PackageIcon>greenhopper_simple-icon.png</PackageIcon>
+    <PackageIcon>./docs/greenhopper_simple-icon.png</PackageIcon>
     <Company />
     <Authors>George Kosmidis</Authors>
     <Copyright>George Kosmidis</Copyright>
