@@ -34,18 +34,19 @@ Install the [Greenhopper](https://www.nuget.org/packages/Greenhopper/) nuget pac
 
 ```json
 {
-  "carbonAwareVars:ForecastDataSource": "WattTime",
-  "carbonAwareVars:proxy:useProxy": false,
-  "carbonAwareVars:proxy:url": "",
-  "carbonAwareVars:proxy:username": "",
-  "carbonAwareVars:proxy:password": "",
-  "wattTimeClient:username": "greenhopper",
-  "wattTimeClient:password": "$gr33nh0pp3r",
-  "greenhopper:ExecutionTimeFrameInHours": 8, 
-  "greenhopper:EstimatedExecutionDurationInMinutes": 5,
+  "DataSources:ForecastDataSource": "WattTime",
+  "DataSources:Configurations:WattTime:Type": "WattTime",
+  "DataSources:Configurations:WattTime:Username": "greenhopper",
+  "DataSources:Configurations:WattTime:Password": "$gr33nh0pp3r",
+  "DataSources:Configurations:WattTime:BaseURL": "https://api2.watttime.org/v2/",
+  "DataSources:Configurations:WattTime:Proxy:UseProxy": false,
+  "greenhopper:EstimatedExecutionDurationInMinutes": 5, // my func will run for aprox X mins (searches for the optimal time to run an X mins payload)
+  "greenhopper:ExecutionTimeFrameInHours": 8, // my func needs to run in the next X hours (searches the optimal time to run an X mins payload in the next X hours)
   "greenhopper:OnNoForecastContinue": false
 }
 ```
+
+> For more configuration options, like using ElectricityMaps instead of WattTime or a test dataset, follow this: https://github.com/Green-Software-Foundation/carbon-aware-sdk/blob/dev/src/CarbonAware.WebApi/src/appsettings.Development.json.template
 
 ### Configure Greenhopper in `Program.cs`
 

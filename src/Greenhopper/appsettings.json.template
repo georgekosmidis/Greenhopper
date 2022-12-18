@@ -1,13 +1,13 @@
-﻿{
-  "carbonAwareVars:ForecastDataSource": "WattTime",
-  "carbonAwareVars:EmissionsDataSource": "WattTime",
-  "carbonAwareVars:proxy:useProxy": false,
-  "carbonAwareVars:proxy:url": "",
-  "carbonAwareVars:proxy:username": "",
-  "carbonAwareVars:proxy:password": "",
-  "wattTimeClient:username": "wattTimeClient-username",
-  "wattTimeClient:password": "wattTimeClient-password",
-  "carbonAwareFunctionVars:EstimatedExecutionDuration": 1, // my func will run for aprox X mins (searches for the optimal time to run an X mins payload)
-  "carbonAwareFunctionVars:NextXHoursForAnExecutionWindow": 24, // my func needs to run in the next X hours (searches the optimal time to run an X mins payload in the next X hours)
-  "carbonAwareFunctionVars:OnNoForecastExecute": false
+﻿//for more configuration options, 
+// look here: https: //github.com/Green-Software-Foundation/carbon-aware-sdk/blob/dev/src/CarbonAware.WebApi/src/appsettings.Development.json.template
+{
+  "DataSources:ForecastDataSource": "WattTime",
+  "DataSources:Configurations:WattTime:Type": "WattTime",
+  "DataSources:Configurations:WattTime:Username": "greenhopper",
+  "DataSources:Configurations:WattTime:Password": "$gr33nh0pp3r",
+  "DataSources:Configurations:WattTime:BaseURL": "https://api2.watttime.org/v2/",
+  "DataSources:Configurations:WattTime:Proxy:UseProxy": false,
+  "greenhopper:EstimatedExecutionDurationInMinutes": 5, // my func will run for aprox X mins (searches for the optimal time to run an X mins payload)
+  "greenhopper:ExecutionTimeFrameInHours": 8, // my func needs to run in the next X hours (searches the optimal time to run an X mins payload in the next X hours)
+  "greenhopper:OnNoForecastContinue": false
 }
