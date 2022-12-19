@@ -13,7 +13,7 @@
     <RepositoryUrl>https://github.com/georgekosmidis/greenhopper</RepositoryUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageTags>Azure Function, Carbon Aware, Green Software, Sustainable Software</PackageTags>
-    <Description>Greenhopper is a small library that adds carbon aware capabilities to your code, converting your workload to a sustainable one, and thus environmentally more friendly. Visit https://github.com/georgekosmidis/greenhopper for more.</Description>
+    <Description>Greenhopper is a small .NET library that adds carbon aware capabilities to your Azure Function, converting your non-critical workload to a sustainable one that runs only when the regions' electricity is greener. Visit https://github.com/georgekosmidis/greenhopper for more.</Description>
     <AssemblyVersion>0.2.2</AssemblyVersion>
     <FileVersion>0.2.2</FileVersion>
     <Version>0.2.2</Version>
