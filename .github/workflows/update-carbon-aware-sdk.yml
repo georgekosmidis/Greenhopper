@@ -30,10 +30,10 @@ jobs:
         echo "Changes to carbon-aware SDK detected; updating local branch..."
 
     - name: test
-      run: echo "${{ steps.pull-carbon-aware-sdk.continue }}"
+      run: echo "${{ steps.pull-carbon-aware-sdk.outputs.continue }}"
       
     - name: build-service 
-      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 'true'
+      if: steps.pull-carbon-aware-sdk.outputs.continue == true
       run: dotnet build ./src/Greenhopper.sln
 
       # todo: run tests
