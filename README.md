@@ -6,7 +6,7 @@
 
 # Greenhopper - Decarbonize your non-critical Azure workloads!
 
-Greenhopper is a small library that adds carbon aware capabilities to your Azure Function, converting your non-critical workload to a sustainable one that runs only when the region electricity is greener.
+Greenhopper is a small >NET library that adds carbon aware capabilities to your Azure Function, converting your non-critical workload to a sustainable one that runs only when the region electricity is greener.
 
 ## How it works
 
