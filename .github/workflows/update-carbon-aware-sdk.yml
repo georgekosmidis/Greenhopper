@@ -23,24 +23,24 @@ jobs:
         echo "Status returned by submodule: ${status}"
         if [ "$status" == "" ]; then
           echo "No carbon-aware SDK updates detected; Skipping run..."
-          echo "continue=0" >> $GITHUB_OUTPUT
+          echo "continue=false" >> $GITHUB_OUTPUT
           exit 0
         fi
-        echo "continue=1" >> $GITHUB_OUTPUT
+        echo "continue=true" >> $GITHUB_OUTPUT
         echo "Changes to carbon-aware SDK detected; updating local branch..."
 
     - name: build-service
-      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
+      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 'true'
       run: dotnet build ./src/Greenhopper.sln
 
       # todo: run tests
 
     - name: build-sample
-      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
+      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 'true'
       run: dotnet build ./sample/timer-trigger/CarbonAware.AzureFunction.Sample.sln
     
     - name: create-new-branch-with-changes
-      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
+      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 'true'
       id: push_output
       run: |
            branchbasename=carbon-aware-sdk-$(date +"%Y.%m.%d-%H.%M.%S")-${{ github.run_number }}
@@ -57,7 +57,7 @@ jobs:
            echo "::set-output name=branchname::${branchname}"
 
     - name: pull-request
-      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
+      if: ${{ steps.pull-carbon-aware-sdk.continue }} == 'true'
       uses: actions/github-script@v6
       with:
         script: |
