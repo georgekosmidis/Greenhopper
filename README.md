@@ -120,6 +120,10 @@ Content-Length: 143
 
 > You can also import [this Postman Collection](https://raw.githubusercontent.com/georgekosmidis/Greenhopper/main/docs/WattTime%20Account.postman_collection.json).
 
+## Ideation
+The idea of using Carbon Aware SDK was born in [Azure Developer Community Conference 2022](https://azuredev.org/) from [Ralf Richter](https://github.com/entwickler42). The first introduction was in that conference during the [Sustainability: Carbon Aware Azure Functions
+Live Stream](https://azuredev.org/sessions/sustainability-carbon-aware-azure-functions) session with a different name, and shortly after the implementation completed.
+
 ##  References
 1. [Carbon Aware Azure Function Sample (Timer Trigger)](https://github.com/georgekosmidis/carbon-aware-azure-function/tree/main/sample/timer-trigger)
 2. [How to create an account in WattTime](https://www.watttime.org/api-documentation/#register-new-user)
