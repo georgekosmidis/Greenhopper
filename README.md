@@ -121,7 +121,7 @@ Content-Length: 143
 > You can also import [this Postman Collection](https://raw.githubusercontent.com/georgekosmidis/Greenhopper/main/docs/WattTime%20Account.postman_collection.json).
 
 ## Ideation
-The idea of using [Carbon Aware SDK](https://github.com/Green-Software-Foundation/carbon-aware-sdk) was born in [Azure Developer Community Conference 2022](https://azuredev.org/) from [Ralf Richter](https://github.com/entwickler42). The first introduction was in the same conference during the "[Sustainability: Carbon Aware Azure Functions
+The idea of using [Carbon Aware SDK](https://github.com/Green-Software-Foundation/carbon-aware-sdk) was born in [Azure Developer Community Conference 2022](https://azuredev.org/) from [Ralf Richter](). The first introduction was in the same conference during the "[Sustainability: Carbon Aware Azure Functions
 Live Stream](https://azuredev.org/sessions/sustainability-carbon-aware-azure-functions)" session with a different name, and shortly after the implementation began.
 
 ##  References
