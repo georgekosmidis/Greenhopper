@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Greenhopper</id>
-    <version>0.3.3</version>
+    <version>0.3.4</version>
     <title>Greenhopper</title>
     <authors>George Kosmidis</authors>
     <license type="expression">Apache-2.0</license>
