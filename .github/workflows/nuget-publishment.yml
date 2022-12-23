@@ -32,12 +32,15 @@ jobs:
       uses: actions/checkout@v3
       with: 
         submodules: true
+     
+    - name: setup-nuget
+      uses: NuGet/setup-nuget@v1.1.1
         
     - name: pack
       run: |    
         pushd ./src/Greenhopper/
         dotnet build -c Release
-        dotnet pack -c Release
+        nuget pack Greenhopper.csproj -IncludeReferencedProjects -Properties Configuration=Release
         popd
         
     - name: upload-artifacts
@@ -55,7 +58,7 @@ jobs:
         with:
           path: ./
    
-      - name: nuget-setip
+      - name: nuget-setup
         uses: NuGet/setup-nuget@v1.1.1
     
       - name: Publish
