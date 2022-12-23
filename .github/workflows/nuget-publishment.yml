@@ -39,7 +39,8 @@ jobs:
     - name: pack
       run: |    
         pushd ./src/Greenhopper/
-        nuget pack Greenhopper.csproj -Build -IncludeReferencedProjects
+        dotnet build -c Release
+        nuget pack Greenhopper.csproj -IncludeReferencedProjects -Properties Configuration=Release
         popd
         
     - name: upload-artifacts
