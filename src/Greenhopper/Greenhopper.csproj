@@ -1,25 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
-	</PropertyGroup>
-
-	<Target Name="CopyProjectReferencesToPackage" DependsOnTargets="BuildOnlySettings;ResolveReferences">
-		<ItemGroup>
-			<!-- Filter out unnecessary files -->
-			<_ReferenceCopyLocalPaths Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')-&gt;WithMetadataValue('PrivateAssets', 'All'))" />
-		</ItemGroup>
-
-		<!-- Print batches for debug purposes -->
-		<Message Text="Batch for .nupkg: ReferenceCopyLocalPaths = @(_ReferenceCopyLocalPaths), ReferenceCopyLocalPaths.DestinationSubDirectory = %(_ReferenceCopyLocalPaths.DestinationSubDirectory) Filename = %(_ReferenceCopyLocalPaths.Filename) Extension = %(_ReferenceCopyLocalPaths.Extension)" Importance="High" Condition="'@(_ReferenceCopyLocalPaths)' != ''" />
-
-		<ItemGroup>
-			<!-- Add file to package with consideration of sub folder. If empty, the root folder is chosen. -->
-			<BuildOutputInPackage Include="@(_ReferenceCopyLocalPaths)" TargetPath="%(_ReferenceCopyLocalPaths.DestinationSubDirectory)" />
-		</ItemGroup>
-	</Target>
-
-
-	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
@@ -33,9 +13,9 @@
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<PackageTags>Azure Function, Carbon Aware, Green Software, Sustainable Software</PackageTags>
 		<Description>Greenhopper is a small .NET library that adds carbon aware capabilities to your Azure Function, converting your non-critical workload to a sustainable one that runs only when the regions' electricity is greener. Visit https://github.com/georgekosmidis/greenhopper for more.</Description>
-		<AssemblyVersion>0.3.2</AssemblyVersion>
-		<FileVersion>0.3.2</FileVersion>
-		<Version>0.3.2</Version>
+		<AssemblyVersion>0.3.3</AssemblyVersion>
+		<FileVersion>0.3.3</FileVersion>
+		<Version>0.3.3</Version>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<Title>Greenhopper</Title>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -46,13 +26,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\carbon-aware-sdk\src\CarbonAware.Aggregators\src\CarbonAware.Aggregators.csproj" PrivateAssets="all" />
-		<ProjectReference Include="..\..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.Json\src\CarbonAware.DataSources.Json.csproj" PrivateAssets="all" />
-		<ProjectReference Include="..\..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.Registration\CarbonAware.DataSources.Registration.csproj"  PrivateAssets="all" />
-		<ProjectReference Include="..\..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.WattTime\src\CarbonAware.DataSources.WattTime.csproj" PrivateAssets="all" />
-		<ProjectReference Include="..\..\carbon-aware-sdk\src\CarbonAware.LocationSources\src\CarbonAware.LocationSources.csproj" PrivateAssets="all" />
-		<ProjectReference Include="..\..\carbon-aware-sdk\src\CarbonAware.Tools\CarbonAware.Tools.WattTimeClient\src\CarbonAware.Tools.WattTimeClient.csproj" PrivateAssets="all" />
-		<ProjectReference Include="..\..\carbon-aware-sdk\src\CarbonAware\src\CarbonAware.csproj" PrivateAssets="all" />
+		<ProjectReference Include="..\..\carbon-aware-sdk\src\CarbonAware.Aggregators\src\CarbonAware.Aggregators.csproj" />
+		<ProjectReference Include="..\..\carbon-aware-sdk\src\CarbonAware\src\CarbonAware.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>Greenhopper</id>
+    <version>0.3.3</version>
+    <title>Greenhopper</title>
+    <authors>George Kosmidis</authors>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <icon>./docs/greenhopper_simple-icon.png</icon>
+    <readme>./README.md</readme>
+    <projectUrl>https://github.com/georgekosmidis/greenhopper</projectUrl>
+    <description>Greenhopper is a small .NET library that adds carbon aware capabilities to your Azure Function, converting your non-critical workload to a sustainable one that runs only when the regions' electricity is greener. Visit https://github.com/georgekosmidis/greenhopper for more.</description>
+    <copyright>George Kosmidis</copyright>
+    <tags>Azure Function, Carbon Aware, Green Software, Sustainable Software</tags>
+    <repository url="https://github.com/georgekosmidis/greenhopper" />
+  </metadata>
+  <files>
+    <file src="./docs/greenhopper_simple-icon.png" target="docs" />
+    <file src="./../../README.md" target="" />
+  </files>
+</package>
