@@ -39,8 +39,7 @@ jobs:
     - name: pack
       run: |    
         pushd ./src/Greenhopper/
-        dotnet build -c Release
-        nuget pack Greenhopper.csproj -IncludeReferencedProjects
+        nuget pack Greenhopper.csproj -Build -IncludeReferencedProjects
         popd
         
     - name: upload-artifacts
@@ -58,7 +57,7 @@ jobs:
         with:
           path: ./
    
-      - name: nuget-setip
+      - name: nuget-setup
         uses: NuGet/setup-nuget@v1.1.1
     
       - name: Publish
