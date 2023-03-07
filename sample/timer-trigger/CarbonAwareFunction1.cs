@@ -22,7 +22,7 @@ public class CarbonAwareFunction1
     [Function("CarbonAwareFunction1")]
     public async Task Run([TimerTrigger("0 */1 * * * *")] TimerInfo timerInfo)
     {
-        using var activity = Activity.StartActivity();
+        using var activity = Activity.StartActivity(nameof(CarbonAwareFunction1.Run));
         if (!await _greenhopper.IsOptimalWindowNowAsync())
         {
             _logger.LogWarning("No execution for now!");

@@ -7,7 +7,7 @@ namespace Greenhopper.Models;
 /// A Data Tranfer Object that holds the parameters  
 /// <see cref="IForecastAggregator.GetCurrentForecastDataAsync(CarbonAwareParameters)"/> needs.
 /// </summary>
-public class EmissionsForecastCurrentDTO : CarbonAwareParametersBaseDTO
+public class EmissionsForecastCurrentDto : CarbonAwareParametersBaseDTO
 {
     /// <summary>String array of named locations</summary>
     /// <example>westus</example>

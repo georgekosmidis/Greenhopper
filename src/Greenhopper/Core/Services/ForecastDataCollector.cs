@@ -53,7 +53,7 @@ public class ForecastDataCollector : IForecastDataCollector
         ExceptionExtensions.ThrowIfOutsideBounds(datetime, DateTimeOffset.Now, DateTimeOffset.MaxValue);
 
         var forecastData = await _cacheManager.AddOrGetExisting($"{region}-{datetime.Ticks}-{nextXHoursForAnExecutionWindow}-{estimatedExecutionDuration}",
-            async () => await _forecastAggregator.GetCurrentForecastDataAsync(new EmissionsForecastCurrentDTO
+            async () => await _forecastAggregator.GetCurrentForecastDataAsync(new EmissionsForecastCurrentDto
             {
                 MultipleLocations = new string[] { region },
                 Start = datetime,
