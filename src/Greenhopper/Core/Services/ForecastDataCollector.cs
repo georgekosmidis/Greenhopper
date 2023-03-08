@@ -1,8 +1,7 @@
-﻿using CarbonAware.Aggregators.Forecast;
-using CarbonAware.Model;
-using Greenhopper.Core.Cache;
+﻿using Greenhopper.Core.Cache;
 using Greenhopper.Core.Exceptions;
-using Greenhopper.Models;
+using GSF.CarbonAware.Handlers;
+using GSF.CarbonAware.Models;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Text.Json;
@@ -17,7 +16,7 @@ public class ForecastDataCollector : IForecastDataCollector
 
     private readonly ILogger<ForecastDataCollector> _logger;
 
-    private readonly IForecastAggregator _forecastAggregator;
+    private readonly IForecastHandler _forecastHandler;
 
     private static readonly ActivitySource Activity = new(nameof(ForecastDataCollector));
 
@@ -27,20 +26,20 @@ public class ForecastDataCollector : IForecastDataCollector
     /// Creates an instance of a <see cref="ForecastDataCollector"/>.
     /// </summary>
     /// <param name="loggerFactory">An instance used to configure the logging system and create <see cref="ILogger"/> instances.</param>
-    /// <param name="forecastAggregator">A Carbon Aware Forewast Aggregator instance.</param>
+    /// <param name="forecastHandler">A Carbon Aware Forewast Handler.</param>
     /// <param name="cacheManager">A Cache Manager insance.</param>
     public ForecastDataCollector(
         ILoggerFactory loggerFactory,
-        IForecastAggregator forecastAggregator,
+        IForecastHandler forecastHandler,
         ICacheManager cacheManager
         )
     {
         ExceptionExtensions.ThrowIfNull(loggerFactory);
-        ExceptionExtensions.ThrowIfNull(forecastAggregator);
+        ExceptionExtensions.ThrowIfNull(forecastHandler);
         ExceptionExtensions.ThrowIfNull(cacheManager);
 
         _logger = loggerFactory.CreateLogger<ForecastDataCollector>();
-        _forecastAggregator = forecastAggregator;
+        _forecastHandler = forecastHandler;
         _cacheManager = cacheManager;
     }
 
@@ -48,22 +47,21 @@ public class ForecastDataCollector : IForecastDataCollector
     public async Task<EmissionsForecast> GetAsync(string region, DateTimeOffset datetime, int nextXHoursForAnExecutionWindow, int estimatedExecutionDuration)
     {
         ExceptionExtensions.ThrowIfNullOrWhiteSpace(region);
+        ExceptionExtensions.ThrowIfOutsideBounds(datetime, DateTimeOffset.Now, DateTimeOffset.MaxValue);
         ExceptionExtensions.ThrowIfOutsideBounds(nextXHoursForAnExecutionWindow, 1, int.MaxValue);
         ExceptionExtensions.ThrowIfOutsideBounds(estimatedExecutionDuration, 1, nextXHoursForAnExecutionWindow * 60);
-        ExceptionExtensions.ThrowIfOutsideBounds(datetime, DateTimeOffset.Now, DateTimeOffset.MaxValue);
 
-        var forecastData = await _cacheManager.AddOrGetExisting($"{region}-{datetime.Ticks}-{nextXHoursForAnExecutionWindow}-{estimatedExecutionDuration}",
-            async () => await _forecastAggregator.GetCurrentForecastDataAsync(new EmissionsForecastCurrentDto
-            {
-                MultipleLocations = new string[] { region },
-                Start = datetime,
-                End = datetime.AddHours(nextXHoursForAnExecutionWindow),
-                Duration = estimatedExecutionDuration
-            }), 5 * 60);//5 minutes
+        var forecastResult = await _cacheManager.AddOrGetExisting($"{region}-{datetime.Ticks}-{nextXHoursForAnExecutionWindow}-{estimatedExecutionDuration}",
+            async () => await _forecastHandler.GetCurrentForecastAsync( 
+                new string[] { region }, 
+                datetime, 
+                datetime.AddHours(nextXHoursForAnExecutionWindow), 
+                estimatedExecutionDuration
+            ), 5 * 60);//5 minutes
 
         if (_logger.IsEnabled(LogLevel.Debug))
         {
-            var stringforeCastData = JsonSerializer.Serialize(forecastData, new JsonSerializerOptions
+            var stringforeCastData = JsonSerializer.Serialize(forecastResult, new JsonSerializerOptions
             {
                 WriteIndented = true
             });
@@ -72,6 +70,8 @@ public class ForecastDataCollector : IForecastDataCollector
 #pragma warning restore CA2254 // Template should be a static expression 
         }
 
-        return forecastData.First();//one region, one result;
+        ExceptionExtensions.ThrowIfNullOrEmpty(forecastResult);
+
+        return forecastResult.First();//one region, one result;
     }
 }

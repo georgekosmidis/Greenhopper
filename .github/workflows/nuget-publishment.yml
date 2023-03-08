@@ -17,11 +17,12 @@ jobs:
       if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
       run: dotnet build ./src/Greenhopper.sln
       
-      # todo: run tests
-      
     - name: build-sample
       if: ${{ steps.pull-carbon-aware-sdk.continue }} == 1
       run: dotnet build ./sample/timer-trigger/CarbonAware.AzureFunction.Sample.sln
+    
+    - name: test-service
+      run: dotnet test ./src/Greenhopper.Tests/Greenhopper.Tests.csproj
       
   pack-service:
     needs: [test-service]

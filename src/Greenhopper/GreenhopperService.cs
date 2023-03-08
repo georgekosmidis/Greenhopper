@@ -1,5 +1,4 @@
-﻿using CarbonAware.Exceptions;
-using CarbonAware.Model;
+﻿using GSF.CarbonAware.Models;
 using Greenhopper.Core.Exceptions;
 using Greenhopper.Core.Services;
 using Greenhopper.Models;
@@ -7,6 +6,7 @@ using Greenhopper.SettingsConfiguration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using GSF.CarbonAware.Exceptions;
 
 namespace Greenhopper;
 

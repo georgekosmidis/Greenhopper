@@ -1,7 +1,7 @@
-﻿using CarbonAware.Aggregators.Configuration;
-using Greenhopper.Core.Cache;
+﻿using Greenhopper.Core.Cache;
 using Greenhopper.Core.Services;
 using Greenhopper.SettingsConfiguration;
+using GSF.CarbonAware.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -32,21 +32,12 @@ public static class HostingHostBuilderExtensions
                 var serviceProvider = sc.BuildServiceProvider();
 
                 var config = serviceProvider.GetService<IConfiguration>();
-                var errorMessage = "";
-                var successfulEmissionServices = sc.TryAddCarbonAwareEmissionServices(config!, out errorMessage);
-
-                if (!successfulEmissionServices)
-                {
-                    var _logger = serviceProvider.GetService<ILogger<IHostBuilder>>();
-                    _logger?.LogError(errorMessage);
-                }
-
+                sc.AddForecastServices(config!);
                 sc.AddLogging(builder => builder.AddDebug());
                 sc.AddSingleton<IGreenhopperService, GreenhopperService>();
                 sc.AddMemoryCache();
                 sc.AddSingleton<ICacheManager, MemoryCacheManager>();
                 sc.AddSingleton<IForecastDataCollector, ForecastDataCollector>();
-
             });
     }
 }

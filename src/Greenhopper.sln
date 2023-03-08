@@ -5,21 +5,21 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Greenhopper", "Greenhopper\Greenhopper.csproj", "{6F3B65C9-03D6-45A6-A2F3-9A5B57D9022E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.Aggregators", "..\carbon-aware-sdk\src\CarbonAware.Aggregators\src\CarbonAware.Aggregators.csproj", "{5EBD0FB1-FD1B-4D56-ADF4-A48218E21CD8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Greenhopper.Tests", "Greenhopper.Tests\Greenhopper.Tests.csproj", "{6AC46C54-CFD4-49F2-9065-6B745D444846}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware", "..\carbon-aware-sdk\src\CarbonAware\src\CarbonAware.csproj", "{F21630A3-90BD-4C3D-B0B2-EE55BB6FDA68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GSF.CarbonAware", "..\carbon-aware-sdk\src\GSF.CarbonAware\src\GSF.CarbonAware.csproj", "{32022925-CBE0-4A91-86D4-20230E3617D4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.DataSources.Registration", "..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.Registration\CarbonAware.DataSources.Registration.csproj", "{19DB32B7-4D29-490E-9FDD-202FE12C0D26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware", "..\carbon-aware-sdk\src\CarbonAware\src\CarbonAware.csproj", "{6EC8802C-B5A7-4D0E-B14E-899DFB722052}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.DataSources.Json", "..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.Json\src\CarbonAware.DataSources.Json.csproj", "{141B66ED-2AC5-4E6A-8B34-164AB238447B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.LocationSources", "..\carbon-aware-sdk\src\CarbonAware.LocationSources\src\CarbonAware.LocationSources.csproj", "{BA6AB41E-1F6B-44D9-A36C-2764ADA78894}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.DataSources.WattTime", "..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.WattTime\src\CarbonAware.DataSources.WattTime.csproj", "{56AE8649-F37C-4175-88F3-A0B16FF06FE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.DataSources.Registration", "..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.Registration\CarbonAware.DataSources.Registration.csproj", "{B240EC5E-FC0B-4CD1-B1E0-ABD56D51A45A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.Tools.WattTimeClient", "..\carbon-aware-sdk\src\CarbonAware.Tools\CarbonAware.Tools.WattTimeClient\src\CarbonAware.Tools.WattTimeClient.csproj", "{3418CE8B-1EF3-4228-84B6-A8A68B268A2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.DataSources.ElectricityMaps", "..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.ElectricityMaps\src\CarbonAware.DataSources.ElectricityMaps.csproj", "{7B09AA79-46E8-4B43-BF67-D82DABD516A8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.LocationSources", "..\carbon-aware-sdk\src\CarbonAware.LocationSources\src\CarbonAware.LocationSources.csproj", "{02C69655-50B2-48F1-850B-2A335948DE64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.DataSources.Json", "..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.Json\src\CarbonAware.DataSources.Json.csproj", "{6F736B0A-38DD-4338-8B87-C412006B6565}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.DataSources.ElectricityMaps", "..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.ElectricityMaps\src\CarbonAware.DataSources.ElectricityMaps.csproj", "{41F57768-4423-44E1-8E8E-1B9A3F56621F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.DataSources.WattTime", "..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.WattTime\src\CarbonAware.DataSources.WattTime.csproj", "{67A3B8F1-106C-4A98-9601-5995CF8B3C12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,38 +31,38 @@ Global
 		{6F3B65C9-03D6-45A6-A2F3-9A5B57D9022E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F3B65C9-03D6-45A6-A2F3-9A5B57D9022E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F3B65C9-03D6-45A6-A2F3-9A5B57D9022E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5EBD0FB1-FD1B-4D56-ADF4-A48218E21CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5EBD0FB1-FD1B-4D56-ADF4-A48218E21CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5EBD0FB1-FD1B-4D56-ADF4-A48218E21CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5EBD0FB1-FD1B-4D56-ADF4-A48218E21CD8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F21630A3-90BD-4C3D-B0B2-EE55BB6FDA68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F21630A3-90BD-4C3D-B0B2-EE55BB6FDA68}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F21630A3-90BD-4C3D-B0B2-EE55BB6FDA68}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F21630A3-90BD-4C3D-B0B2-EE55BB6FDA68}.Release|Any CPU.Build.0 = Release|Any CPU
-		{19DB32B7-4D29-490E-9FDD-202FE12C0D26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{19DB32B7-4D29-490E-9FDD-202FE12C0D26}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{19DB32B7-4D29-490E-9FDD-202FE12C0D26}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{19DB32B7-4D29-490E-9FDD-202FE12C0D26}.Release|Any CPU.Build.0 = Release|Any CPU
-		{141B66ED-2AC5-4E6A-8B34-164AB238447B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{141B66ED-2AC5-4E6A-8B34-164AB238447B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{141B66ED-2AC5-4E6A-8B34-164AB238447B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{141B66ED-2AC5-4E6A-8B34-164AB238447B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{56AE8649-F37C-4175-88F3-A0B16FF06FE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56AE8649-F37C-4175-88F3-A0B16FF06FE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56AE8649-F37C-4175-88F3-A0B16FF06FE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56AE8649-F37C-4175-88F3-A0B16FF06FE8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3418CE8B-1EF3-4228-84B6-A8A68B268A2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3418CE8B-1EF3-4228-84B6-A8A68B268A2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3418CE8B-1EF3-4228-84B6-A8A68B268A2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3418CE8B-1EF3-4228-84B6-A8A68B268A2C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{02C69655-50B2-48F1-850B-2A335948DE64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{02C69655-50B2-48F1-850B-2A335948DE64}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{02C69655-50B2-48F1-850B-2A335948DE64}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{02C69655-50B2-48F1-850B-2A335948DE64}.Release|Any CPU.Build.0 = Release|Any CPU
-		{41F57768-4423-44E1-8E8E-1B9A3F56621F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{41F57768-4423-44E1-8E8E-1B9A3F56621F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{41F57768-4423-44E1-8E8E-1B9A3F56621F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{41F57768-4423-44E1-8E8E-1B9A3F56621F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AC46C54-CFD4-49F2-9065-6B745D444846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AC46C54-CFD4-49F2-9065-6B745D444846}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AC46C54-CFD4-49F2-9065-6B745D444846}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AC46C54-CFD4-49F2-9065-6B745D444846}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32022925-CBE0-4A91-86D4-20230E3617D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32022925-CBE0-4A91-86D4-20230E3617D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32022925-CBE0-4A91-86D4-20230E3617D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32022925-CBE0-4A91-86D4-20230E3617D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EC8802C-B5A7-4D0E-B14E-899DFB722052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EC8802C-B5A7-4D0E-B14E-899DFB722052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EC8802C-B5A7-4D0E-B14E-899DFB722052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EC8802C-B5A7-4D0E-B14E-899DFB722052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA6AB41E-1F6B-44D9-A36C-2764ADA78894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA6AB41E-1F6B-44D9-A36C-2764ADA78894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA6AB41E-1F6B-44D9-A36C-2764ADA78894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA6AB41E-1F6B-44D9-A36C-2764ADA78894}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B240EC5E-FC0B-4CD1-B1E0-ABD56D51A45A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B240EC5E-FC0B-4CD1-B1E0-ABD56D51A45A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B240EC5E-FC0B-4CD1-B1E0-ABD56D51A45A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B240EC5E-FC0B-4CD1-B1E0-ABD56D51A45A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B09AA79-46E8-4B43-BF67-D82DABD516A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B09AA79-46E8-4B43-BF67-D82DABD516A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B09AA79-46E8-4B43-BF67-D82DABD516A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B09AA79-46E8-4B43-BF67-D82DABD516A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F736B0A-38DD-4338-8B87-C412006B6565}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F736B0A-38DD-4338-8B87-C412006B6565}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F736B0A-38DD-4338-8B87-C412006B6565}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F736B0A-38DD-4338-8B87-C412006B6565}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67A3B8F1-106C-4A98-9601-5995CF8B3C12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67A3B8F1-106C-4A98-9601-5995CF8B3C12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67A3B8F1-106C-4A98-9601-5995CF8B3C12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67A3B8F1-106C-4A98-9601-5995CF8B3C12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
