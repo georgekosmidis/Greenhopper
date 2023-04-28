@@ -39,7 +39,7 @@ jobs:
       run: |    
         pushd ./src/Greenhopper/
         dotnet build -c Release
-        dotnet pack Greenhopper.csproj --include-referenced-projects --configuration Release
+        dotnet pack Greenhopper.csproj --configuration Release
         popd
         
     - name: upload-artifacts
