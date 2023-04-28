@@ -45,7 +45,7 @@ jobs:
     - name: upload-artifacts
       uses: actions/upload-artifact@v3
       with:
-        path: ./src/Greenhopper/*.nupkg
+        path: ./src/Greenhopper/bin/Release/*.nupkg
         
   push-nuget:      
       needs: [pack-service]
