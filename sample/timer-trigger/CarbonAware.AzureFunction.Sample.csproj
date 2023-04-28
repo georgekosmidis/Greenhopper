@@ -15,17 +15,22 @@
 	  <Optimize>True</Optimize>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Azure.Storage.Blobs" Version="12.15.0" />
-		<PackageReference Include="Azure.Storage.Files.Shares" Version="12.13.0" />
-		<PackageReference Include="Azure.Storage.Queues" Version="12.13.0" />
-		<PackageReference Include="Greenhopper" Version="0.4.0" />
-		<PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.10.1" />
+		<PackageReference Include="Azure.Storage.Blobs" Version="12.16.0" />
+		<PackageReference Include="Azure.Storage.Files.Shares" Version="12.14.0" />
+		<PackageReference Include="Azure.Storage.Queues" Version="12.14.0" />
+		<PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.13.0" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Storage" Version="5.0.1" />
-		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Timer" Version="4.1.0" />
-		<PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.7.0" />
-		<PackageReference Include="Microsoft.Extensions.Azure" Version="1.6.0" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.3" />
+		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Timer" Version="4.2.0" />
+		<PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.10.0" />
+		<PackageReference Include="Microsoft.Extensions.Azure" Version="1.6.3" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.4" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5.0" />
+
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="appsettings.json">
@@ -44,5 +49,8 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Properties\ServiceDependencies\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\src\Greenhopper\Greenhopper.csproj" />
 	</ItemGroup>
 </Project>
