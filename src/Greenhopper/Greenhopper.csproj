@@ -15,20 +15,34 @@
 		<Description>Greenhopper is a small .NET library that adds carbon aware capabilities to your Azure Function, converting your non-critical workload to a sustainable one that runs only when the regions' electricity is greener. Visit https://github.com/georgekosmidis/greenhopper for more.</Description>
 		<AssemblyVersion>0.4.0</AssemblyVersion>
 		<FileVersion>0.4.0</FileVersion>
-		<Version>0.5.2</Version>
+		<Version>0.6.2</Version>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<Title>Greenhopper</Title>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<None Remove="GreenhopperConfiguration\HostingHostBuilderExtensions.cs~RF48a5c54.TMP" />
-	</ItemGroup>
-
+	
 	<ItemGroup>
 		<ProjectReference Include="..\..\carbon-aware-sdk\src\GSF.CarbonAware\src\GSF.CarbonAware.csproj" PrivateAssets="all" />
+		<ProjectReference Include="..\..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.Registration\CarbonAware.DataSources.Registration.csproj" PrivateAssets="all" />
+		<ProjectReference Include="..\..\carbon-aware-sdk\src\CarbonAware.LocationSources\src\CarbonAware.LocationSources.csproj" PrivateAssets="all" />
+		<ProjectReference Include="..\..\carbon-aware-sdk\src\CarbonAware\src\CarbonAware.csproj" PrivateAssets="all" />
+		<ProjectReference Include="..\..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.ElectricityMapsFree\src\CarbonAware.DataSources.ElectricityMapsFree.csproj" PrivateAssets="all" />
+		<ProjectReference Include="..\..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.ElectricityMaps\src\CarbonAware.DataSources.ElectricityMaps.csproj" PrivateAssets="all" />
+		<ProjectReference Include="..\..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.Json\src\CarbonAware.DataSources.Json.csproj" PrivateAssets="all" />
+		<ProjectReference Include="..\..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.WattTime\src\CarbonAware.DataSources.WattTime.csproj" PrivateAssets="all" />
+	
 	</ItemGroup>
 
+	<PropertyGroup>
+		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+	</PropertyGroup>
+	
+	<Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
+		<ItemGroup>
+			<BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+		</ItemGroup>
+	</Target>
+	
 	<ItemGroup>
 		<None Update="appsettings.json.template">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
