@@ -40,12 +40,13 @@ jobs:
         pushd ./src/Greenhopper/
         dotnet build -c Release
         dotnet pack Greenhopper.csproj --configuration Release
+        /home/runner/work/Greenhopper/Greenhopper/src/Greenhopper/bin/Release/Greenhopper.0.5.0.nupkg
         popd
         
     - name: upload-artifacts
       uses: actions/upload-artifact@v3
       with:
-        path: ./src/Greenhopper/*.nupkg
+        path: ./src/Greenhopper/bin/Release/*.nupkg
         
   push-nuget:      
       needs: [pack-service]
