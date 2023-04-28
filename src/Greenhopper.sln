@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Greenhopper", "Greenhopper\Greenhopper.csproj", "{6F3B65C9-03D6-45A6-A2F3-9A5B57D9022E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Greenhopper.Tests", "Greenhopper.Tests\Greenhopper.Tests.csproj", "{6AC46C54-CFD4-49F2-9065-6B745D444846}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Greenhopper.Tests", "Greenhopper.Tests\Greenhopper.Tests.csproj", "{6AC46C54-CFD4-49F2-9065-6B745D444846}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GSF.CarbonAware", "..\carbon-aware-sdk\src\GSF.CarbonAware\src\GSF.CarbonAware.csproj", "{32022925-CBE0-4A91-86D4-20230E3617D4}"
 EndProject
@@ -20,6 +20,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.DataSources.Json", "..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.Json\src\CarbonAware.DataSources.Json.csproj", "{6F736B0A-38DD-4338-8B87-C412006B6565}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.DataSources.WattTime", "..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.WattTime\src\CarbonAware.DataSources.WattTime.csproj", "{67A3B8F1-106C-4A98-9601-5995CF8B3C12}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.DataSources.ElectricityMaps.Mocks", "..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.ElectricityMaps\mock\CarbonAware.DataSources.ElectricityMaps.Mocks.csproj", "{34EA7047-179A-4850-92C4-5BB398FD1200}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.DataSources.ElectricityMaps.Tests", "..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.ElectricityMaps\test\CarbonAware.DataSources.ElectricityMaps.Tests.csproj", "{87EBB85D-261A-498D-B6E7-DEE315AB8712}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonAware.DataSources.ElectricityMapsFree", "..\carbon-aware-sdk\src\CarbonAware.DataSources\CarbonAware.DataSources.ElectricityMapsFree\src\CarbonAware.DataSources.ElectricityMapsFree.csproj", "{516A96D6-643A-4DEF-B477-376C8B91FB6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +69,18 @@ Global
 		{67A3B8F1-106C-4A98-9601-5995CF8B3C12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67A3B8F1-106C-4A98-9601-5995CF8B3C12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67A3B8F1-106C-4A98-9601-5995CF8B3C12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34EA7047-179A-4850-92C4-5BB398FD1200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34EA7047-179A-4850-92C4-5BB398FD1200}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34EA7047-179A-4850-92C4-5BB398FD1200}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34EA7047-179A-4850-92C4-5BB398FD1200}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87EBB85D-261A-498D-B6E7-DEE315AB8712}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87EBB85D-261A-498D-B6E7-DEE315AB8712}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87EBB85D-261A-498D-B6E7-DEE315AB8712}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87EBB85D-261A-498D-B6E7-DEE315AB8712}.Release|Any CPU.Build.0 = Release|Any CPU
+		{516A96D6-643A-4DEF-B477-376C8B91FB6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{516A96D6-643A-4DEF-B477-376C8B91FB6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{516A96D6-643A-4DEF-B477-376C8B91FB6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{516A96D6-643A-4DEF-B477-376C8B91FB6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
