@@ -26,7 +26,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\carbon-aware-sdk\src\GSF.CarbonAware\src\GSF.CarbonAware.csproj" PrivateAssets="All"/>
+		<ProjectReference Include="..\..\carbon-aware-sdk\src\GSF.CarbonAware\src\GSF.CarbonAware.csproj"/>
 	</ItemGroup>
 
 	<ItemGroup>
