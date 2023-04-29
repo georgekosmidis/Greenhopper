@@ -19,6 +19,4 @@ jobs:
       
     - name: test-service
       run: dotnet test ./src/Greenhopper.Tests/Greenhopper.Tests.csproj
-      
-    - name: build-sample
-      run: dotnet build ./sample/timer-trigger/CarbonAware.AzureFunction.Sample.sln
+

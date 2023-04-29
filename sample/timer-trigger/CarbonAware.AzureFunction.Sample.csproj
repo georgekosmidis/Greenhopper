@@ -18,7 +18,7 @@
 		<PackageReference Include="Azure.Storage.Blobs" Version="12.16.0" />
 		<PackageReference Include="Azure.Storage.Files.Shares" Version="12.14.0" />
 		<PackageReference Include="Azure.Storage.Queues" Version="12.14.0" />
-		<PackageReference Include="Greenhopper" Version="0.6.2" />
+		<PackageReference Include="Greenhopper" Version="0.6.8" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.13.0" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Storage" Version="5.0.1" />
 		<PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Timer" Version="4.2.0" />
@@ -33,6 +33,14 @@
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5.0" />
 
 	</ItemGroup>
+
+	<Target Name="CopyContentFilesFromPackage" AfterTargets="Build">
+		<ItemGroup>
+			<PackageContentFiles Include="$(Greenhopper)\data-sources\json\**\*.json" />
+		</ItemGroup>
+		<Copy SourceFiles="@(PackageContentFiles)" DestinationFolder="$(TargetDir)\data-sources\json" SkipUnchangedFiles="true" />
+	</Target>
+	
 	<ItemGroup>
 		<None Update="appsettings.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>

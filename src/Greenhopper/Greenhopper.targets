@@ -1,0 +1,8 @@
+<Project>
+  <Target Name="CopyLocationSourcesJson" BeforeTargets="Build">
+    <ItemGroup>
+      <_LocationSourceFiles Include="$(MSBuildThisFileDirectory)..\contentFiles\any\any\location-sources\json\**\*.json" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_LocationSourceFiles)" DestinationFolder="$(OutDir)location-sources\json\%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+</Project>
