@@ -1,0 +1,8 @@
+<Project>
+	<ItemGroup>
+		<Content Include="$(MSBuildThisFileDirectory)location-sources\json\**\*.json">
+			<PackagePath>contentFiles\any\any\location-sources\json</PackagePath>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+		</Content>
+	</ItemGroup>
+</Project>
