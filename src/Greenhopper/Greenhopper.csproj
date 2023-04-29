@@ -13,9 +13,9 @@
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<PackageTags>Azure Function, Carbon Aware, Green Software, Sustainable Software</PackageTags>
 		<Description>Greenhopper is a small .NET library that adds carbon aware capabilities to your Azure Function, converting your non-critical workload to a sustainable one that runs only when the regions' electricity is greener. Visit https://github.com/georgekosmidis/greenhopper for more.</Description>
-		<AssemblyVersion>0.4.0</AssemblyVersion>
-		<FileVersion>0.4.0</FileVersion>
-		<Version>0.6.4</Version>
+		<AssemblyVersion>0.6.5</AssemblyVersion>
+		<FileVersion>0.6.5</FileVersion>
+		<Version>0.6.5</Version>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<Title>Greenhopper</Title>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -33,7 +33,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="..\..\carbon-aware-sdk\src\data\data-sources\**\*.json" Pack="true" PackagePath="data-sources\json" Link="data-sources\json\%(RecursiveDir)%(Filename)%(Extension)">
+		<None Include="..\..\carbon-aware-sdk\src\data\location-sources\**\*.json" Pack="true" PackagePath="location-sources\json" Link="location-sources\json\%(RecursiveDir)%(Filename)%(Extension)">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
